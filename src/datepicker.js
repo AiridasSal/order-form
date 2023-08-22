@@ -66,31 +66,33 @@ routeDropdown.addEventListener('change', function() {
   const currentDay = today.getDate();
 
   // Populate day dropdown
-  for (let i = 1; i <= daysInMonth; i++) {
-    const day = new Date(year, month, i);
+for (let i = 1; i <= daysInMonth; i++) {
+  const day = new Date(year, month, i);
 
-    // Skip days before the current day if the current month is selected
-    if (month == currentMonth && i < currentDay) {
-      continue;
-    }
+  // Skip days before the current day if the current month is selected
+  if (month == currentMonth && i < currentDay) {
+    continue;
+  }
 
-    // Only add Wednesdays for LT-UK route
-    if (routeDropdown.value == 'LT-UK' && day.getDay() == 3) {
-      const dayOption = document.createElement('option');
-      dayOption.value = i;
-      dayOption.text = i;
-      dayDropdown.appendChild(dayOption);
-    }
+  // Only add Wednesdays for LT-UK route
+  if (routeDropdown.value == 'LT-UK' && day.getDay() == 3) {
+    const dayOption = document.createElement('option');
+    dayOption.value = i;
+    dayOption.text = i;
+    dayDropdown.appendChild(dayOption);
+  }
 
-    // Add Fridays and Saturdays as a single option for UK-LT route
-    if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && i + 1 <= daysInMonth && new Date(year, month, i + 1).getDay() == 6) {
+  // Add Fridays and Saturdays as a single option for UK-LT route
+  if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && i + 1 <= daysInMonth && new Date(year, month, i + 1).getDay() == 6) {
+    // Check if the Saturday is in the past
+    if (!(month == currentMonth && i + 1 < currentDay)) {
       const dayOption = document.createElement('option');
       dayOption.value = `${i}-${i + 1}`;
       dayOption.text = `${i}-${i + 1}`;
       dayDropdown.appendChild(dayOption);
     }
   }
-});
+}});
 
 // Trigger change event to populate day dropdown for current route
 routeDropdown.dispatchEvent(new Event('change'));

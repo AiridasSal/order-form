@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('Network error:', error);
       }
     } else {
-        // alert('Prašome ištaisyti klaidas prieš teikiant.');
+        
     }
   });
 });
