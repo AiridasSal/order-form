@@ -21,7 +21,7 @@ yearDropdown.appendChild(yearOption);
 const currentMonth = today.getMonth();
 for (let i = currentMonth; i < 12; i++) {
   const monthOption = document.createElement('option');
-  monthOption.value = i + 1; // Adjusted here
+  monthOption.value = i + 1;
   monthOption.text = new Date(currentYear, i, 1).toLocaleString('lt-LT', { month: 'long' });
   monthDropdown.appendChild(monthOption);
 }
@@ -59,12 +59,20 @@ routeDropdown.addEventListener('change', function() {
 
   // Get number of days in selected month
   const year = yearDropdown.value;
-  const month = monthDropdown.value - 1; // Adjusted here
+  const month = monthDropdown.value - 1;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  // Get today's day
+  const currentDay = today.getDate();
 
   // Populate day dropdown
   for (let i = 1; i <= daysInMonth; i++) {
-    const day = new Date(year, month, i); // Adjusted here
+    const day = new Date(year, month, i);
+
+    // Skip days before the current day if the current month is selected
+    if (month == currentMonth && i < currentDay) {
+      continue;
+    }
 
     // Only add Wednesdays for LT-UK route
     if (routeDropdown.value == 'LT-UK' && day.getDay() == 3) {
@@ -75,7 +83,7 @@ routeDropdown.addEventListener('change', function() {
     }
 
     // Add Fridays and Saturdays as a single option for UK-LT route
-    if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && i + 1 <= daysInMonth && new Date(year, month, i + 1).getDay() == 6) { // Adjusted here
+    if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && i + 1 <= daysInMonth && new Date(year, month, i + 1).getDay() == 6) {
       const dayOption = document.createElement('option');
       dayOption.value = `${i}-${i + 1}`;
       dayOption.text = `${i}-${i + 1}`;
