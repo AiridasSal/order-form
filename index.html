@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="lt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parcel Delivery Form</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/switch.css">
+  </head>
+
+  <body>
+    <h1>Užsakymo forma</h1>
+    <form id="parcel-form" novalidate class="form-container">
+      <div class="route-details">
+        <div class="first-container">
+          <div class="route">
+            <label for="route">Užsakymo kryptis:</label>
+            <select name="route" id="route">
+              <option value="route-not-selected" id="route-not-selected">
+                Pasirinkite kryptį
+              </option>
+              <option value="LT-UK">Lietuva - Anglija</option>
+              <option value="UK-LT">Anglija - Lietuva</option>
+            </select>
+            <div class="error-message" id="route-error"></div>
+          </div>
+
+          <div class="date-fields">
+            <div class="date-label-heading">Užsakymo paėmimo data:</div>
+            <div class="date-fields-container">
+              <div>
+                <label class="date-label" for="year">Metai:</label>
+                <select name="year" id="year" style="display: none"></select>
+              </div>
+
+              <div>
+                <label class="date-label" for="month">Mėnuo:</label>
+                <select name="month" id="month" style="display: none"></select>
+              </div>
+
+              <div>
+                <label class="date-label" for="day">Diena:</label>
+                <select name="day" id="day" style="display: none"></select>
+              </div>
+            </div>
+            <div class="error-message" id="date-error"></div>
+          </div>
+        </div>
+        <div id="parcel-details">
+          <div id="parcelContainer">
+            <div class="parcel">
+              <label for="parcel1"
+                >1 siuntos svoris kilogramais (pvz.: 5):</label
+              >
+              <input type="text" id="parcel1" name="parcel1" placeholder="" />
+            </div>
+          </div>
+          <button id="add-parcel">Pridėti siuntą</button>
+          <div class="error-message" id="parcel-error"></div>
+        </div>
+      </div>
+      <h2>Mokėtojo informacija</h2>
+      <div class="additional-fields">
+          <div class="additional-fields-container">
+            <div class="additional-fields-item">
+        <label for="order-email">Užsakovo el.paštas:</label>
+        <input
+          type="email"
+          id="order-email"
+          name="order-email"
+          placeholder="pvz. info@ecotrip.lt"
+          required
+        />
+        <div class="error-message" id="order-email-error"></div>
+      </div>
+      <div class="additional-fields-item">
+        <label for="payer">Mokėtojas:</label>
+        <select name="payer" id="payer">
+          <option value="sender">Siuntėjas</option>
+          <option value="receiver">Gavėjas</option>
+        </select>
+        <div class="error-message" id="payer-error"></div>
+      </div>
+      <div class="additional-fields-item">
+        <label for="payment-type">Atsiskaitymo tipas:</label>
+        <select name="payment-type" id="payment-type">
+          <option value="cash">Grynais</option>
+          <option value="card">Kortele</option>
+          <option value="transfer">Bankinis pavedimas</option>
+        </select>
+        <div class="error-message" id="payment-type-error"></div>
+      </div>
+      </div>
+      <div id="estimated-price">Numatoma kaina: €0.00</div>
+      <div class="invoice-checkbox-container">
+        <label for="invoice-checkbox">Sąskaita faktūra</label>
+        <label class="switch" for="invoice-checkbox">
+            
+          <input
+          type="checkbox"
+          id="invoice-checkbox"
+          name="invoice-checkbox"
+          onchange="toggleInvoiceFields()"
+        />
+          <span class="slider round"></span>
+        </label>
+      
+    
+    </div>
+      <div class="additional-fields-container">    
+        <div id="invoice-fields" style="display: none">
+          <div class="invoice-fields-item">
+          <label for="company-name">Vardas (įmonės pavadinimas):</label>
+          <input
+            type="text"
+            id="company-name"
+            name="company-name"
+            placeholder=""
+          />
+          <div class="error-message" id="company-name-error"></div>
+        </div>
+          <div class="invoice-fields-item">
+          <label for="company-code">Įmonės kodas:</label>
+          <input
+            type="text"
+            id="company-code"
+            name="company-code"
+            placeholder=""
+          />
+          <div class="error-message" id="company-code-error"></div>
+        </div>
+          <div class="invoice-fields-item">
+          <label for="company-email">Įmonės el. paštas:</label>
+          <input
+            type="email"
+            id="company-email"
+            name="company-email"
+            placeholder=""
+          />
+          <div class="error-message" id="company-email-error"></div>
+        </div>
+          <div class="invoice-fields-item">
+          <label for="company-address">Įmonės adresas:</label>
+          <input
+            type="text"
+            id="company-address"
+            name="company-address"
+            placeholder=""
+          />
+          <div class="error-message" id="company-address-error"></div>
+        </div>
+          <div class="invoice-fields-item">
+          <label for="company-post-code">Įmonės pašto kodas:</label>
+          <input
+            type="text"
+            id="company-post-code"
+            name="company-post-code"
+            placeholder=""
+            disabled
+          />
+          <input
+            type="hidden"
+            id="hidden-company-post-code"
+            name="hidden-company-post-code"
+            placeholder=""
+            value=""
+          />
+        </div>
+        </div>
+      </div>
+      </div>
+      <div class="contact-fields-container"> 
+      <div class="contact-fields" id="sender-fields">
+        <h2>Siuntėjo informacija</h2>
+
+        <label for="sender-name">Vardas:</label>
+        <input
+          type="text"
+          id="sender-name"
+          name="sender-name"
+          placeholder=""
+          required
+          pattern=".{3,}"
+        />
+        <div class="error-message" id="sender-name-error"></div>
+
+        <label for="sender-surname">Pavardė:</label>
+        <input
+          type="text"
+          id="sender-surname"
+          name="sender-surname"
+          placeholder=""
+          required
+          pattern=".{3,}"
+        />
+        <div class="error-message" id="sender-surname-error"></div>
+
+        <label for="sender-phone">Telefonas:</label>
+        <input
+          type="tel"
+          id="sender-phone"
+          name="sender-phone"
+          placeholder="pvz. +37060122060"
+          required
+          pattern="\+\d+"
+        />
+        <div class="error-message" id="sender-phone-error"></div>
+
+        <label for="sender-email">El. paštas:</label>
+        <input
+          type="email"
+          id="sender-email"
+          name="sender-email"
+          placeholder="info@ecotrip.lt"
+          required
+        />
+        <div class="error-message" id="sender-email-error"></div>
+
+        <label for="sender-address">Adresas:</label>
+        <input
+          type="text"
+          id="sender-address"
+          name="sender-address"
+          placeholder="gatvė, namo numeris, miestas"
+          required
+        />
+        <div class="error-message" id="sender-address-error"></div>
+
+        <label for="sender-post-code">Pašto kodas:</label>
+        <input
+          type="text"
+          id="sender-post-code"
+          name="sender-post-code"
+          placeholder=""
+          required
+          disabled
+        />
+        <input
+          type="hidden"
+          id="hidden-sender-post-code"
+          name="hidden-sender-post-code"
+          value=""
+        />
+        <div class="error-message" id="sender-post-code-error"></div>
+      </div>
+
+      <div class="contact-fields" id="receiver-fields">
+        <h2>Gavėjo informacija</h2>
+
+        <label for="receiver-name">Vardas:</label>
+        <input
+          type="text"
+          id="receiver-name"
+          name="receiver-name"
+          placeholder=""
+          required
+          pattern=".{3,}"
+        />
+        <div class="error-message" id="receiver-name-error"></div>
+
+        <label for="receiver-surname">Pavardė:</label>
+        <input
+          type="text"
+          id="receiver-surname"
+          name="receiver-surname"
+          placeholder=""
+          required
+          pattern=".{3,}"
+        />
+        <div class="error-message" id="receiver-surname-error"></div>
+
+        <label for="receiver-phone">Telefonas:</label>
+        <input
+          type="tel"
+          id="receiver-phone"
+          name="receiver-phone"
+          placeholder="pvz. +37060122060"
+          required
+          pattern="\+\d+"
+        />
+        <div class="error-message" id="receiver-phone-error"></div>
+
+        <label for="receiver-email">El. paštas:</label>
+        <input
+          type="email"
+          id="receiver-email"
+          name="receiver-email"
+          placeholder="info@ecotrip.lt"
+          required
+        />
+        <div class="error-message" id="receiver-email-error"></div>
+
+        <label for="receiver-address">Adresas:</label>
+        <input
+          type="text"
+          id="receiver-address"
+          name="receiver-address"
+          placeholder="gatvė, namo numeris, miestas"
+          required
+        />
+        <div class="error-message" id="receiver-address-error"></div>
+
+        <label for="receiver-post-code">Pašto kodas:</label>
+        <input
+          type="text"
+          id="receiver-post-code"
+          name="receiver-post-code"
+          placeholder=""
+          required
+          disabled
+        />
+        <div class="error-message" id="receiver-post-code-error"></div>
+        <input
+          type="hidden"
+          id="hidden-receiver-post-code"
+          name="hidden-receiver-post-code"
+          value=""
+        />
+      </div>
+    </div>
+      <button type="submit" id="submit-form">Registruoti siuntas</button>
+      <div class="error-message" id="submit-error"></div>
+    </form>
+    <script src="./src/script.js"></script>
+    <script src="./src/datepicker.js"></script>
+    <script src="./src/validation.js"></script>
+    <script src="./src/parcels.js"></script>
+    <script src="./src/autocomplete.js"></script>
+    <script src="./src/additional.js"></script>
+    <script src="./src/price.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDovSnz31yp2vxsf3kgTeNqKBd-yFGWMvg&libraries=places&callback=initAutocomplete"></script>
+  </body>
+</html>

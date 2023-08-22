@@ -1,0 +1,50 @@
+/* The switch container */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;  /* Width of the switch */
+    height: 34px; /* Height of the switch */
+  }
+  
+  /* Hide the checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider (background of the switch) */
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Color when the switch is off */
+    transition: 0.4s; /* Smooth transition */
+    border-radius: 34px; /* Rounded corners */
+  }
+  
+  /* The circle inside the slider */
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px; /* Height of the circle */
+    width: 26px;  /* Width of the circle */
+    left: 4px;    /* Initial position from the left */
+    bottom: 4px;  /* Position from the bottom */
+    background-color: white; /* Color of the circle */
+    transition: 0.4s; /* Smooth transition */
+    border-radius: 50%; /* Makes the circle round */
+  }
+  
+  /* When the checkbox is checked, move the circle to the right */
+  input:checked + .slider:before {
+    transform: translateX(26px); /* Move the circle by its own width */
+  }
+  
+  /* Change the background color of the slider when the checkbox is checked */
+  input:checked + .slider {
+    background-color: #2196F3; /* Color when the switch is on */
+  }
+  
