@@ -5,21 +5,26 @@ const priceElement = document.getElementById('estimated-price')
 
 function removeParcel(button) {
     const parcelContainer = document.getElementById('parcelContainer');
-    parcelContainer.removeChild(button.parentElement);
+    
+    // Remove the clicked button's parent div of class "parcel"
+    const parcelToRemove = button.closest('.parcel');
+    parcelContainer.removeChild(parcelToRemove);
   
     // Reorder the labels and input IDs after removal
-    const parcels = parcelContainer.getElementsByClassName('parcel');
-    for (let i = 0; i < parcels.length; i++) {
+    const parcels = parcelContainer.getElementsByClassName('parcel-items');
+    for (let i = 1; i < parcels.length; i++) {
         const label = parcels[i].getElementsByTagName('label')[0];
         const input = parcels[i].getElementsByTagName('input')[0];
   
         label.setAttribute('for', `parcel${i + 1}`);
-        label.textContent = `${i + 1} siuntos svoris:`;
+        label.textContent = `Papildomos siuntos Nr. ${i + 1} svoris:`;
         input.setAttribute('id', `parcel${i + 1}`);
         input.setAttribute('name', `parcel${i + 1}`);
     }
+    
     updateEstimatedPrice(); // Update price after removing a parcel
 }
+
 function calculateEstimatedPrice(parcels, route, payer) {
     let basePrice = getBasePrice(parcels);
     

@@ -244,5 +244,25 @@ function validateForm() {
   } else {
     submitErrorField.textContent = "";
   }
+  const packingErrorField = document.getElementById("packing-rules-error")
+  const shippingErrorField = document.getElementById("shipping-rules-error")
+  const packingField = document.getElementById("packing-rules")
+  const shippingField = document.getElementById("shipping-rules")
+
+  if (!packingField.checked){
+    packingErrorField.textContent=
+    "Prašome susipažinti ir sutikti su siuntos pakavimo taisyklėmis"
+    isValid = false
+  }else{
+    packingErrorField.textContent=""
+  }
+  if (!shippingField.checked){
+    shippingErrorField.textContent=
+    "Prašome susipažinti ir sutikti su siuntos pakavimo taisyklėmis"
+    isValid = false
+  }else{
+    shippingErrorField.textContent=""
+  }
+
   return isValid;
 }

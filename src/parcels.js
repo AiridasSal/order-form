@@ -2,7 +2,7 @@ document.getElementById('add-parcel').addEventListener('click', function(event) 
     event.preventDefault();
   
     const parcelContainer = document.getElementById('parcelContainer');
-    const currentParcels = parcelContainer.getElementsByClassName('parcel').length;
+    const currentParcels = parcelContainer.getElementsByClassName('parcel-items').length;
   
     if (currentParcels < 10) {
         const parcelNumber = currentParcels + 1;
@@ -10,9 +10,13 @@ document.getElementById('add-parcel').addEventListener('click', function(event) 
         parcelDiv.className = 'parcel';
   
         parcelDiv.innerHTML = `
-            <label for="parcel${parcelNumber}">${parcelNumber} siuntos svoris:</label>
-            <input type="text" id="parcel${parcelNumber}" name="parcel${parcelNumber}" oninput="updateEstimatedPrice()" />
-            <button onclick="removeParcel(this)">Pašalinti siuntą</button>
+            <div class="parcel-items">
+            <label for="parcel${parcelNumber}">Papildomos siuntos Nr. ${parcelNumber} svoris: </label>
+            <input class="parcel-weight" placeholder="Įveskite svorį kilogramais" type="text" id="parcel${parcelNumber}" name="parcel${parcelNumber}" oninput="updateEstimatedPrice()" />
+            </div>
+            <div class="third-container">
+            <button id="remove-parcel" onclick="removeParcel(this)">Pašalinti papildomą siuntą</button>
+            </div>
         `;
   
         parcelContainer.appendChild(parcelDiv);
@@ -33,7 +37,7 @@ function updateEstimatedPrice() {
     const { price, currency } = calculateEstimatedPrice(parcels, route, payer);
 
     // Display the estimated price
-    document.getElementById('estimated-price').textContent = `Numatoma kaina: ${currency}${price.toFixed(2)}`;
+    document.getElementById('estimated-price').textContent = `Numatoma užsakymo kaina: ${currency}${price.toFixed(2)}`;
 }
 // Attach event listeners to the route and payer fields
 document.getElementById('route').addEventListener('change', updateEstimatedPrice);

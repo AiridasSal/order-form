@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Additional fields
         orderEmail: data['order-email'],
         payer: data.payer,
-        description: data['comment'],
+        description: data.comment,
         paymentType: data['payment-type'],
         invoice: data['invoice-checkbox'] === 'on' ? {
           companyName: data['company-name'],

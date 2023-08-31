@@ -28,7 +28,7 @@ document.getElementById('parcel-form').addEventListener('submit', function(event
   const paymentType = document.getElementById('payment-type').value;
   const checkbox = document.getElementById('invoice-checkbox');
   const submitError = document.getElementById('submit-error')
-  if (paymentType === 'transfer' && !checkbox.checked) {
+  if (paymentType === 'pavedimas' && !checkbox.checked) {
       event.preventDefault(); // Prevent the form from submitting
       checkbox.checked = true; // Check the checkbox
       toggleInvoiceFields(); // Display the invoice fields
