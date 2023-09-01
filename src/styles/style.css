@@ -103,6 +103,7 @@
     align-items: center;
 }
 }
+@media screen and (max-width: 767px) {
 .route{
     display: flex;
     flex-direction: column;
@@ -130,7 +131,7 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
-
+}
 .full-width{
     flex: 100%;
 }
