@@ -82,8 +82,8 @@
             <div class="additional-fields-item">
               <label for="payer">Kas mokės už pervežimą?</label>
               <select name="payer" id="payer">
-                <option value="Siuntėjas">Siuntėjas</option>
-                <option value="Gavėjas">Gavėjas</option>
+                <option value="sender">Siuntėjas</option>
+                <option value="receiver">Gavėjas</option>
               </select>
               <p class="input-explanation">Prašome iš anksto nurodyti, kas bus atsakingas už siuntos apmokėjimą, kad vėliau nebūtų nesusipratimų ar papildomų klausimų po užsakymo.</p>
               <div class="error-message" id="payer-error"></div>
@@ -91,16 +91,16 @@
             <div class="additional-fields-item">
               <label for="payment-type">Pasirinkite apmokėjimo būdą</label>
               <select name="payment-type" id="payment-type">
-                <option value="grynais">Grynais</option>
-                <option value="kortele">Kortele</option>
-                <option value="pavedimas">Bankiniu pavedimu</option>
+                <option value="cash">Grynais</option>
+                <option value="card">Kortele</option>
+                <option value="transfer">Bankiniu pavedimu</option>
               </select>
               <p class="input-explanation">Prašome pasirinkti ir nurodyti atsiskaitymo būdą, kuris jums yra patogus ir teisingas.</p>
               <div class="error-message" id="payment-type-error"></div>
             </div>
             </div>
         </div>
-            <div id="estimated-price">Numatoma užsakymo kaina:<strong>€0.00</strong> </div>
+            <div id="estimated-price">Numatoma užsakymo kaina: €0.00</div>
             <div class="invoice-checkbox-container">
               <label class="switch" for="invoice-checkbox">
                   
@@ -407,6 +407,7 @@
     <script src="./src/scripts/autocomplete.js"></script>
     <script src="./src/scripts/additional.js"></script>
     <script src="./src/scripts/price.js"></script>
+    <script src="./src/scripts/popup.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDovSnz31yp2vxsf3kgTeNqKBd-yFGWMvg&libraries=places&callback=initAutocomplete"></script>
 </body>
 </html>

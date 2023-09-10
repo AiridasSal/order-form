@@ -1,5 +1,5 @@
 function validateAddress(address) {
-  const regex = /([A-Za-z\s]+),\s*([\d\/A-Za-z\s]+),\s*([\d\/A-Za-z\s]+)/;
+  const regex = /([A-Za-z\s]+) \s*([\d\/A-Za-z\s]+) \s*([\d\/A-Za-z\s]+)/;
   return regex.test(address);
 }
 function isValidWeight(weight) {
