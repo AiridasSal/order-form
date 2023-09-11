@@ -14,7 +14,7 @@ document
 
       parcelDiv.innerHTML = `
             <div class="parcel-items">
-            <label for="parcel${parcelNumber}">Papildomos siuntos Nr. ${parcelNumber} svoris: </label>
+            <label for="parcel${parcelNumber}">Papildomos siuntos Nr. ${parcelNumber} svoris </label>
             <input class="parcel-weight" placeholder="Įveskite svorį kilogramais" type="text" id="parcel${parcelNumber}" name="parcel${parcelNumber}" oninput="updateEstimatedPrice()" />
             </div>
             <div class="third-container">
