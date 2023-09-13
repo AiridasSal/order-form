@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const paymentTypeSelect = document.getElementById("payment-type");
     if (paymentTypeSelect) {
       paymentTypeSelect.addEventListener("change", (e) => {
-        if (e.target.value === "pavedimas") {
+        if (e.target.value === "transfer") {
           popup.style.display = "block";
         }
       });

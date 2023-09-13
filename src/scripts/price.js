@@ -6,11 +6,9 @@ const priceElement = document.getElementById("estimated-price");
 function removeParcel(button) {
   const parcelContainer = document.getElementById("parcelContainer");
 
-  // Remove the clicked button's parent div of class "parcel"
   const parcelToRemove = button.closest(".parcel");
   parcelContainer.removeChild(parcelToRemove);
 
-  // Reorder the labels and input IDs after removal
   const parcels = parcelContainer.getElementsByClassName("parcel-items");
   for (let i = 1; i < parcels.length; i++) {
     const label = parcels[i].getElementsByTagName("label")[0];
@@ -22,13 +20,12 @@ function removeParcel(button) {
     input.setAttribute("name", `parcel${i + 1}`);
   }
 
-  updateEstimatedPrice(); // Update price after removing a parcel
+  updateEstimatedPrice();
 }
 
 function calculateEstimatedPrice(parcels, route, payer) {
   let basePrice = getBasePrice(parcels);
 
-  // Adjust the price and currency based on route and payer
   const { adjustedPrice, currency } = adjustPriceAndCurrency(
     basePrice,
     route,
@@ -42,11 +39,9 @@ function calculateEstimatedPrice(parcels, route, payer) {
 }
 
 function getBasePrice(parcels) {
-  // Define your pricing rules here
   const priceUpTo5kg = 35;
   const price5to30kg = 40;
 
-  // Calculate the price for each parcel
   const parcelPrices = parcels.map((weight) => {
     if (weight <= 5) {
       return priceUpTo5kg;
@@ -67,26 +62,22 @@ function getBasePrice(parcels) {
     }
   });
 
-  // Calculate the total price without discount
   const totalPrice = parcelPrices.reduce((sum, price) => sum + price, 0);
 
-  // Apply a discount based on the total number of parcels
   const discount = getDiscount(parcelPrices.length);
 
-  // Calculate the final price with discount
   const finalPrice = totalPrice * (1 - discount);
   const roundedPrice = parseFloat(finalPrice.toFixed(2));
 
-  return roundedPrice; // This is the price before any adjustments based on route and payer
+  return roundedPrice;
 }
 
 function adjustPriceAndCurrency(basePrice, route, payer) {
   let adjustedPrice = basePrice;
-  let currency = "€"; // Default currency
+  let currency = "€";
 
   if (route === "LT-UK") {
     if (payer === "receiver") {
-
       adjustedPrice = basePrice * 0.85;
       currency = "£";
     }
@@ -101,16 +92,15 @@ function adjustPriceAndCurrency(basePrice, route, payer) {
 }
 
 function getDiscount(numberOfParcels) {
-  // Define your discount rules here
   if (numberOfParcels >= 5) {
-    return 0.2; // 20% discount
+    return 0.2;
   } else if (numberOfParcels >= 4) {
-    return 0.15; // 15% discount
+    return 0.15;
   } else if (numberOfParcels >= 3) {
-    return 0.1; // 10% discount
+    return 0.1;
   } else if (numberOfParcels >= 2) {
-    return 0.05; // 5% discount
+    return 0.05;
   } else {
-    return 0; // No discount
+    return 0;
   }
 }

@@ -1,23 +1,18 @@
-// Get today's date
 const today = new Date();
 
-// Get dropdown elements
 const routeDropdown = document.getElementById('route');
 const yearDropdown = document.getElementById('year');
 const monthDropdown = document.getElementById('month');
 const dayDropdown = document.getElementById('day');
 
-// Get label elements
 const dateLabels = document.querySelectorAll('.date-label');
 
-// Populate year dropdown with current year
 const currentYear = today.getFullYear();
 const yearOption = document.createElement('option');
 yearOption.value = currentYear;
 yearOption.text = currentYear;
 yearDropdown.appendChild(yearOption);
 
-// Populate month dropdown with all months except previous
 const currentMonth = today.getMonth();
 for (let i = currentMonth; i < 12; i++) {
   const monthOption = document.createElement('option');
@@ -26,23 +21,19 @@ for (let i = currentMonth; i < 12; i++) {
   monthDropdown.appendChild(monthOption);
 }
 
-// Reset day dropdown when month is changed
 monthDropdown.addEventListener('change', function() {
   routeDropdown.dispatchEvent(new Event('change'));
 });
 
-// Populate day dropdown based on selected route
 routeDropdown.addEventListener('change', function() {
   // Clear day dropdown
   dayDropdown.innerHTML = '';
 
-  // Add an empty option to the day dropdown
   const emptyOption = document.createElement('option');
   emptyOption.value = '';
   emptyOption.text = '';
   dayDropdown.appendChild(emptyOption);
 
-  // Hide day dropdown and labels if no route is selected
   if (routeDropdown.value == 'route-not-selected') {
     yearDropdown.style.display = 'none';
     monthDropdown.style.display = 'none';
@@ -51,38 +42,31 @@ routeDropdown.addEventListener('change', function() {
     return;
   }
 
-  // Show dropdowns and labels
   yearDropdown.style.display = '';
   monthDropdown.style.display = '';
   dayDropdown.style.display = '';
   dateLabels.forEach(label => label.style.display = '');
 
-  // Get number of days in selected month
   const year = yearDropdown.value;
   const month = monthDropdown.value - 1;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  // Get today's day
   const currentDay = today.getDate();
 
-  // Populate day dropdown
 for (let i = 1; i <= daysInMonth; i++) {
   const day = new Date(year, month, i);
 
-  // Skip days before the current day if the current month is selected
   if (month == currentMonth && i < currentDay) {
     continue;
   }
 
-  // Only add Wednesdays for LT-UK route
-  if (routeDropdown.value == 'LT-UK' && day.getDay() == 3) {
+  if (routeDropdown.value == 'LT-UK' && day.getDay() == 2) {
     const dayOption = document.createElement('option');
-    dayOption.value = i;
-    dayOption.text = i;
+    dayOption.value = `${i}-${i + 1}`;
+      dayOption.text = `${i}-${i + 1}`;
     dayDropdown.appendChild(dayOption);
   }
 
-  // Add Fridays and Saturdays as a single option for UK-LT route
   if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && i + 1 <= daysInMonth && new Date(year, month, i + 1).getDay() == 6) {
     // Check if the Saturday is in the past
     if (!(month == currentMonth && i + 1 < currentDay)) {
@@ -94,5 +78,4 @@ for (let i = 1; i <= daysInMonth; i++) {
   }
 }});
 
-// Trigger change event to populate day dropdown for current route
 routeDropdown.dispatchEvent(new Event('change'));

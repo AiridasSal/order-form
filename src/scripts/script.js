@@ -1,10 +1,12 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('parcel-form');
-  
+  const submitButton = form.querySelector('[type="submit"]');
+  const loader = document.getElementById('loader');
   form.addEventListener('submit', async function(event) {
     event.preventDefault();
-
+    submitButton.disabled = true;
+    loader.classList.remove('hidden');
     if (validateForm()) {
       const formData = new FormData(form);
       const data = {};
@@ -52,28 +54,37 @@ document.addEventListener('DOMContentLoaded', function() {
         } : null
       };
 
-      console.log('Sending data:', structuredData);
-
       try {
-          const response = await fetch('http://localhost:3000/api/orders', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(structuredData)
-          });
+        const response = await fetch('http://localhost:3000/api/orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(structuredData)
+        });
 
-          if (response.ok) {
-              const jsonResponse = await response.json();
-              console.log(jsonResponse);
-          } else {
-              console.error('Failed to post data:', response.statusText);
-          }
+        if (response.ok) {
+          const jsonResponse = await response.json();
+          console.log(jsonResponse);
+        } else {
+          console.error('Failed to post data:', response.statusText);
+        }
       } catch (error) {
-          console.error('Network error:', error);
+        console.error('Network error:', error);
+      } finally {
+        // Re-enable the submit button and hide loader
+        submitButton.disabled = false;
+        loader.classList.add('hidden');
       }
     } else {
-        
+      // Re-enable the submit button and hide loader if validation fails
+      submitButton.disabled = false;
+      loader.classList.add('hidden');
     }
   });
 });
+
+
+
+
+
