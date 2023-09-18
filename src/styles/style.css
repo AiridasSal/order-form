@@ -1,6 +1,7 @@
 @media screen and (min-width: 767px) {
   form {
-    max-width: 1120px;
+    width: 100%;
+    overflow-x: hidden;
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
   }
