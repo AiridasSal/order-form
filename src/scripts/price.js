@@ -39,26 +39,26 @@ function calculateEstimatedPrice(parcels, route, payer) {
 }
 
 function getBasePrice(parcels) {
-  const priceUpTo5kg = 35;
-  const price5to30kg = 40;
+  const priceUpTo15kg = 35;
+  const price5to30kg = 45;
 
   const parcelPrices = parcels.map((weight) => {
-    if (weight <= 5) {
-      return priceUpTo5kg;
-    } else if (weight > 5 && weight <= 30) {
+    if (weight <= 15) {
+      return priceUpTo15kg;
+    } else if (weight > 15 && weight <= 30) {
       return price5to30kg;
     } else if (weight > 30 && weight <= 50) {
-      return price5to30kg + (weight - 30) * 1.33;
+      return price5to30kg + (weight - 30) * 1.4896;
     } else if (weight > 50 && weight <= 100) {
-      return price5to30kg + (weight - 30) * 1.3;
+      return price5to30kg + (weight - 30) * 1.456;
     } else if (weight > 100 && weight <= 200) {
-      return price5to30kg + (weight - 30) * 1.2;
+      return price5to30kg + (weight - 30) * 1.344;
     } else if (weight > 200 && weight <= 400) {
-      return price5to30kg + (weight - 30) * 1;
+      return price5to30kg + (weight - 30) * 1.12;
     } else if (weight > 400 && weight <= 600) {
-      return price5to30kg + (weight - 30) * 0.93;
+      return price5to30kg + (weight - 30) * 1.0416;
     } else {
-      return price5to30kg + (weight - 30) * 0.85;
+      return price5to30kg + (weight - 30) * 0.952;
     }
   });
 
@@ -77,14 +77,14 @@ function adjustPriceAndCurrency(basePrice, route, payer) {
   let currency = "€";
 
   if (route === "LT-UK") {
-    if (payer === "receiver") {
+    if (payer === "gavėjas") {
       adjustedPrice = basePrice * 0.85;
       currency = "£";
     }
   } else if (route === "UK-LT") {
-    if (payer === "sender") {
+    if (payer === "siuntėjas") {
       currency = "£";
-    } else if (payer === "receiver") {
+    } else if (payer === "gavėjas") {
       adjustedPrice = basePrice * 1.15;
     }
   }

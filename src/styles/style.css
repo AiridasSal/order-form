@@ -181,7 +181,9 @@ h1 {
   text-align: right;
   color: #7a7776;
 }
-
+#date-error{
+  flex: 100%;
+}
 input,
 select,
 button {
@@ -290,4 +292,16 @@ input[type="checkbox"]:focus {
 }
 .hidden {
   display: none;
+}
+.message-container {
+  max-width: 1120px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #7a7776;
+  font-weight: 600;
+  border: 0.5px rgba(0, 0, 0, 0.1) solid;
 }
