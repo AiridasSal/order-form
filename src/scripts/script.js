@@ -92,3 +92,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+// Inside the iframe content
+document.addEventListener('input', function() {
+  window.parent.postMessage('resizeIframe', '*');
+});
+document.addEventListener('click', function() {
+  window.parent.postMessage('resizeIframe', '*');
+});
