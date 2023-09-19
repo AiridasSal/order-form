@@ -1,3 +1,4 @@
+
 @media screen and (min-width: 767px) {
   #parcel-form {
     width: 100%;
@@ -6,309 +7,359 @@
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
   }
-  .invoice-checkbox-container {
+  
+  #parcel-form .invoice-checkbox-container {
     display: flex;
     justify-content: end;
     align-items: center;
     gap: 3px;
   }
-  #invoice-fields {
+  
+  #parcel-form #invoice-fields {
     gap: 20px;
     flex-wrap: wrap;
   }
-  .invoice-fields-item {
+  
+  #parcel-form .invoice-fields-item {
     display: flex;
     flex-direction: column;
     flex: 48%;
   }
-  .contact-fields {
+  
+  #parcel-form .contact-fields {
     flex: 60%;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
   }
-  .input-group {
+  
+  #parcel-form .input-group {
     display: flex;
     flex-direction: column;
     flex: 45%;
   }
-  .last-container {
+  
+  #parcel-form .last-container {
     flex: 60%;
     display: flex;
     flex-wrap: wrap;
     justify-content: end;
   }
-  .comment-container {
+  
+  #parcel-form .comment-container {
     width: 100%;
     display: flex;
     flex-direction: column;
   }
-  .step-container {
+  
+  #parcel-form .step-container {
     display: flex;
     margin-bottom: 30px;
   }
-  .route {
+  
+  #parcel-form .route {
     flex: 30%;
     display: flex;
     flex-direction: column;
   }
-  .payer-information {
+  
+  #parcel-form .payer-information {
     flex: 60%;
   }
-  .additional-fields-container {
-    display: flex;
-    flex-direction: column;
-    /* flex-wrap: wrap; */
-  }
-  .additional-fields-item {
+  
+  #parcel-form .additional-fields-container {
     display: flex;
     flex-direction: column;
   }
-  .additional-fields-item:nth-of-type(2) {
+  
+  #parcel-form .additional-fields-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #parcel-form .additional-fields-item:nth-of-type(2) {
     flex: 50%;
   }
-  .additional-fields-item:nth-of-type(1) {
+  
+  #parcel-form .additional-fields-item:nth-of-type(1) {
     flex: 50%;
   }
-  .full-width {
+  
+  #parcel-form .full-width {
     flex: 100%;
   }
-  .step-name {
+  
+  #parcel-form .step-name {
     flex: 40%;
   }
-
-  .parcel {
+  
+  #parcel-form .parcel {
     display: flex;
     gap: 20px;
     flex: 60%;
     flex-wrap: wrap;
   }
-  .parcel-items {
+  
+  #parcel-form .parcel-items {
     display: flex;
     flex-direction: column;
     flex: 30%;
   }
-  .third-container {
+  
+  #parcel-form .third-container {
     flex: 30%;
     display: flex;
     align-items: center;
   }
-  .date-fields {
+  
+  #parcel-form .date-fields {
     flex: 30%;
     display: flex;
     flex-wrap: wrap;
     column-gap: 20px;
   }
-  .invoice-checkbox-container{
+  
+  #parcel-form .invoice-checkbox-container {
     display: flex;
     justify-content: end;
     align-items: center;
-}
-}
-@media screen and (max-width: 767px) {
-  #parcel-form {
-    width: 100%;
-    overflow-x: hidden;
-    margin: 0 auto;
-    height: min-content;
-
-    font-family: Arial, Helvetica, sans-serif;
-
   }
-.route{
-    display: flex;
-    flex-direction: column;
-}
-.date-fields{
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 20px;
-    
-}
-.parcel{
-    display: flex;
-    flex-direction: column;
-}
-.parcel-items{
-    display: flex;
-    flex-direction: column;
-}
-.payer-information, .additional-fields-item, .container, .invoice-fields-item, .input-group, .comment-container{
-    display: flex;
-    flex-direction: column;
-}
-
-#invoice-fields{
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-}
-.full-width{
+  }
+  @media screen and (max-width: 767px) {
+    #parcel-form {
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0 auto;
+        height: min-content;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    #parcel-form .route {
+        display: flex;
+        flex-direction: column;
+    }
+  
+    #parcel-form .date-fields {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 20px;
+    }
+  
+    #parcel-form .parcel {
+        display: flex;
+        flex-direction: column;
+    }
+  
+    #parcel-form .parcel-items {
+        display: flex;
+        flex-direction: column;
+    }
+  
+    #parcel-form .payer-information,
+    #parcel-form .additional-fields-item,
+    #parcel-form .container,
+    #parcel-form .invoice-fields-item,
+    #parcel-form .input-group,
+    #parcel-form .comment-container {
+        display: flex;
+        flex-direction: column;
+    }
+  
+    #parcel-form #invoice-fields {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+  }
+  
+  #parcel-form .full-width {
     flex: 100%;
-}
-h1 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #7a7776;
-}
-
-.step-container:nth-of-type(1) {
-  gap: 20px;
-  align-items: baseline;
-}
-.step-container:nth-of-type(2) {
-  align-items: baseline;
-}
-
-.date-fields select {
-  flex-grow: 1;
-}
-
-#add-parcel,
-#remove-parcel {
-  width: 100%;
-  text-transform: uppercase;
-  color: #9aa61e;
-  border: 0.5px #9aa61e solid;
-  background-color: white;
-  font-weight: 700;
-}
-#add-parcel {
-  margin-bottom: 12px;
-}
-#remove-parcel {
-  margin-top: 38px;
-}
-
-.additional-container {
-  display: flex;
-  gap: 20px;
-}
-#estimated-price {
-  text-align: right;
-  color: #7a7776;
-}
-#date-error{
-  flex: 100%;
-}
-input,
-select,
-button {
-  padding: 10px 0px;
-  border-radius: 5px;
-  font-size: 14px;
-  padding-left: 10px;
-  color: rgba(122, 119, 118);
-  font-weight: 400;
-  border: 0.5px rgba(0, 0, 0, 0.1) solid;
-}
-#comment {
-  padding: 10px;
-  resize: none;
-  border: 0.5px rgba(0, 0, 0, 0.1) solid;
-}
-input:focus,
-select:focus,
-button:focus {
-  border: 0.5px #9ba61e88 solid;
-  outline: 0.5px #9ba61e88 solid;
-}
-.step-name {
-  color: #7a7776;
-  margin: 0;
-  font-size: 14px;
-  font-weight: 700;
-  margin-top: 10px;
-}
-label {
-  margin: 10px 0px;
-  color: #7a7776;
-  font-weight: 400;
-}
-hr {
-  margin-bottom: 15px;
-}
-.input-explanation {
-  color: rgba(122, 119, 118, 0.5);
-  font-size: 12px;
-  padding-left: 10px;
-}
-.error-message {
-  color: rgba(255, 0, 0, 0.61);
-  /* margin: 10px; */
-  padding-top: 5px;
-  padding-left: 10px;
-  font-size: 14px;
-}
-#parcel-error {
-  text-align: right;
-}
-#submit-form {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: white;
-  background-color: #9aa61e;
-  width: 48%;
-}
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  border: 0.5px rgba(0, 0, 0, 0.1) solid;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  position: relative;
-}
-
-input[type="checkbox"]:checked:before {
-  content: "\2713";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #9aa61e;
-  font-size: 16px;
-}
-
-input[type="checkbox"]:focus {
-  outline: 2px solid #9aa61e;
-  outline-offset: -2px;
-}
-.invoice-checkbox-container {
-  font-size: 14px;
-}
-.invoice-checkbox-container a {
-  color: #9aa61e;
-  text-decoration: underline;
-}
-
-.invoice-checkbox-container a:hover {
-  text-decoration: none;
-}
-.submit-container {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  width: 100%;
-}
-#shipping-rules-error,
-#packing-rules-error {
-  width: 100%;
-}
-.hidden {
-  display: none;
-}
-.message-container {
-  max-width: 1120px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  color: #7a7776;
-  font-weight: 600;
-  border: 0.5px rgba(0, 0, 0, 0.1) solid;
-}
+  }
+  
+  #parcel-form h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #7a7776;
+  }
+  
+  #parcel-form .step-container:nth-of-type(1) {
+    gap: 20px;
+    align-items: baseline;
+  }
+  
+  #parcel-form .step-container:nth-of-type(2) {
+    align-items: baseline;
+  }
+  
+  #parcel-form .date-fields select {
+    flex-grow: 1;
+  }
+  
+  #parcel-form #add-parcel,
+  #parcel-form #remove-parcel {
+    width: 100%;
+    text-transform: uppercase;
+    color: #9aa61e;
+    border: 0.5px #9aa61e solid;
+    background-color: white;
+    font-weight: 700;
+  }
+  
+  #parcel-form #add-parcel {
+    margin-bottom: 12px;
+  }
+  
+  #parcel-form #remove-parcel {
+    margin-top: 38px;
+  }
+  
+  #parcel-form .additional-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  #parcel-form #estimated-price {
+    text-align: right;
+    color: #7a7776;
+  }
+  
+  #parcel-form #date-error {
+    flex: 100%;
+  }
+  
+  #parcel-form input,
+  #parcel-form select,
+  #parcel-form button {
+    padding: 10px 0px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-left: 10px;
+    color: rgba(122, 119, 118);
+    font-weight: 400;
+    border: 0.5px rgba(0, 0, 0, 0.1) solid;
+  }
+  
+  #parcel-form #comment {
+    padding: 10px;
+    resize: none;
+    border: 0.5px rgba(0, 0, 0, 0.1) solid;
+  }
+  
+  #parcel-form input:focus,
+  #parcel-form select:focus,
+  #parcel-form button:focus {
+    border: 0.5px #9ba61e88 solid;
+    outline: 0.5px #9ba61e88 solid;
+  }
+  
+  #parcel-form .step-name {
+    color: #7a7776;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+  
+  #parcel-form label {
+    margin: 10px 0px;
+    color: #7a7776;
+    font-weight: 400;
+  }
+  
+  #parcel-form hr {
+    margin-bottom: 15px;
+  }
+  
+  #parcel-form .input-explanation {
+    color: rgba(122, 119, 118, 0.5);
+    font-size: 12px;
+    padding-left: 10px;
+  }
+  
+  #parcel-form .error-message {
+    color: rgba(255, 0, 0, 0.61);
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 14px;
+  }
+  
+  #parcel-form #parcel-error {
+    text-align: right;
+  }
+  
+  #parcel-form #submit-form {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    background-color: #9aa61e;
+    width: 48%;
+  }
+  
+  #parcel-form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 0.5px rgba(0, 0, 0, 0.1) solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+  }
+  
+  #parcel-form input[type="checkbox"]:checked:before {
+    content: "\2713";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #9aa61e;
+    font-size: 16px;
+  }
+  
+  #parcel-form input[type="checkbox"]:focus {
+    outline: 2px solid #9aa61e;
+    outline-offset: -2px;
+  }
+  
+  #parcel-form .invoice-checkbox-container {
+    font-size: 14px;
+  }
+  
+  #parcel-form .invoice-checkbox-container a {
+    color: #9aa61e;
+    text-decoration: underline;
+  }
+  
+  #parcel-form .invoice-checkbox-container a:hover {
+    text-decoration: none;
+  }
+  
+  #parcel-form .submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+  }
+  
+  #parcel-form #shipping-rules-error,
+  #parcel-form #packing-rules-error {
+    width: 100%;
+  }
+  
+  #parcel-form .hidden {
+    display: none;
+  }
+  
+  #parcel-form .message-container {
+    max-width: 1120px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #7a7776;
+    font-weight: 600;
+    border: 0.5px rgba(0, 0, 0, 0.1) solid;
+  }
+  
