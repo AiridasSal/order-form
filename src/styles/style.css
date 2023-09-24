@@ -295,3 +295,6 @@ input[type="checkbox"]:focus {
 .hidden {
   display: none;
 }
+#date-error{
+  flex: 100%;
+}
