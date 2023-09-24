@@ -1,268 +1,126 @@
-function validateAddress(address) {
-  const regex = /([A-Za-z\s]+) \s*([\d\/A-Za-z\s]+) \s*([\d\/A-Za-z\s]+)/;
-  return regex.test(address);
+function createValidator(condition, errorMessage) {
+  return function (inputId, errorId) {
+    const inputElement = document.getElementById(inputId);
+    const errorElement = document.getElementById(errorId);
+    
+    if (!condition(inputElement.value)) {
+      errorElement.textContent = errorMessage;
+      inputElement.classList.add("error");
+      return false;
+    } else {
+      errorElement.textContent = "";
+      inputElement.classList.remove("error");
+      return true;
+    }
+  };
 }
-function isValidWeight(weight) {
-  const weightValue = parseFloat(weight);
-  return weight && weightValue >= 0.1 && weightValue === Math.abs(weightValue);
-}
+
+// Define validators
+const validateLength = createValidator(value => value.length >= 3, "Vardas ir pavardė privalo turėti ne mažiau kaip 3 simbolius.");
+const validatePhone = createValidator(value => /^\+\d+/.test(value), 'Neteisingas telefono formatas. Turi prasidėti nuo "+" ir sekti skaičiai, pvz., +370 arba +44.');
+const validateEmail = createValidator(value => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value), "Neteisingas el. pašto formatas, pvz., info@ecotrip.lt.");
+const validateAddress = createValidator(value => /([A-Za-z\s]+) \s*([\d\/A-Za-z\s]+) \s*([\d\/A-Za-z\s]+)/.test(value), "Neteisingas adreso formatas. Adresas turi turėti miestą, gatvę ir pastato numerį.");
+const validateSelection = createValidator(value => value !== "route-not-selected" && value !== "", "Būtina pasirinkti variantą.");
+const validateCheckbox = createValidator(value => value, "Būtina pažymėti langelį.");
+const validateWeight = createValidator(value => {
+  const weightValue = parseFloat(value);
+  return weightValue >= 0.1 && weightValue === Math.abs(weightValue);
+}, "Neteisingas svoris. Minimalus svoris yra 0.1.");
+
 function validateForm() {
   let isValid = true;
 
-  // Sender Name Validation
-  const senderName = document.getElementById("sender-name");
-  const senderNameError = document.getElementById("sender-name-error");
-  if (senderName.value.length < 3) {
-    senderNameError.textContent = "Vardo ilgis turi būti bent 3 simboliai.";
-    isValid = false;
-  } else {
-    senderNameError.textContent = "";
-  }
-
-  // Sender Surname Validation
-  const senderSurname = document.getElementById("sender-surname");
-  const senderSurnameError = document.getElementById("sender-surname-error");
-  if (senderSurname.value.length < 3) {
-    senderSurnameError.textContent =
-      "Pavardės ilgis turi būti bent 3 simboliai.";
-    isValid = false;
-  } else {
-    senderSurnameError.textContent = "";
-  }
-
-  // Sender Phone Validation
-  const senderPhone = document.getElementById("sender-phone");
-  const senderPhoneError = document.getElementById("sender-phone-error");
-  if (!senderPhone.value.match(/^\+\d+/)) {
-    senderPhoneError.textContent =
-      'Neteisingas telefono formatas. Turi prasidėti nuo "+" ir sekti skaičiai.';
-    isValid = false;
-  } else {
-    senderPhoneError.textContent = "";
-  }
-
-  // Sender Email Validation
-  const senderEmail = document.getElementById("sender-email");
-  const senderEmailError = document.getElementById("sender-email-error");
-  if (
-    !senderEmail.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
-  ) {
-    senderEmailError.textContent = "Neteisingas el. pašto formatas.";
-    isValid = false;
-  } else {
-    senderEmailError.textContent = "";
-  }
-
-  // Sender Address Validation
-  const senderAddress = document.getElementById("sender-address");
-  const senderAddressError = document.getElementById("sender-address-error");
-  if (!validateAddress(senderAddress.value)) {
-    senderAddressError.textContent =
-      "Adresas turi turėti miestą, gatvę ir pastato numerį.";
-    isValid = false;
-  } else {
-    senderAddressError.textContent = "";
-  }
-
-  // Receiver Name Validation
-  const receiverName = document.getElementById("receiver-name");
-  const receiverNameError = document.getElementById("receiver-name-error");
-  if (receiverName.value.length < 3) {
-    receiverNameError.textContent = "Vardo ilgis turi būti bent 3 simboliai.";
-    isValid = false;
-  } else {
-    receiverNameError.textContent = "";
-  }
-
-  // Receiver Surname Validation
-  const receiverSurname = document.getElementById("receiver-surname");
-  const receiverSurnameError = document.getElementById(
-    "receiver-surname-error"
-  );
-  if (receiverSurname.value.length < 3) {
-    receiverSurnameError.textContent =
-      "Pavardės ilgis turi būti bent 3 simboliai.";
-    isValid = false;
-  } else {
-    receiverSurnameError.textContent = "";
-  }
-
-  // Receiver Phone Validation
-  const receiverPhone = document.getElementById("receiver-phone");
-  const receiverPhoneError = document.getElementById("receiver-phone-error");
-  if (!receiverPhone.value.match(/^\+\d+/)) {
-    receiverPhoneError.textContent =
-      'Neteisingas telefono formatas. Turi prasidėti nuo "+" ir sekti skaičiai.';
-    isValid = false;
-  } else {
-    receiverPhoneError.textContent = "";
-  }
-
-  // Receiver Email Validation
-  const receiverEmail = document.getElementById("receiver-email");
-  const receiverEmailError = document.getElementById("receiver-email-error");
-  if (
-    !receiverEmail.value.match(
-      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-    )
-  ) {
-    receiverEmailError.textContent = "Neteisingas el. pašto formatas.";
-    isValid = false;
-  } else {
-    receiverEmailError.textContent = "";
-  }
-
-  // Receiver Address Validation
-  const receiverAddress = document.getElementById("receiver-address");
-  const receiverAddressError = document.getElementById(
-    "receiver-address-error"
-  );
-  if (!validateAddress(receiverAddress.value)) {
-    receiverAddressError.textContent =
-      "Adresas turi turėti miestą, gatvę ir pastato numerį.";
-    isValid = false;
-  } else {
-    receiverAddressError.textContent = "";
-  }
+  // Validate fields
+  isValid &= validateLength("sender-name", "sender-name-error");
+  isValid &= validateLength("sender-surname", "sender-surname-error");
+  isValid &= validatePhone("sender-phone", "sender-phone-error");
+  isValid &= validateEmail("sender-email", "sender-email-error");
+  isValid &= validateAddress("sender-address", "sender-address-error");
+  
+  isValid &= validateLength("receiver-name", "receiver-name-error");
+  isValid &= validateLength("receiver-surname", "receiver-surname-error");
+  isValid &= validatePhone("receiver-phone", "receiver-phone-error");
+  isValid &= validateEmail("receiver-email", "receiver-email-error");
+  isValid &= validateAddress("receiver-address", "receiver-address-error");
+  
   // Route Validation
-  const route = document.getElementById("route");
-  const routeError = document.getElementById("route-error");
-  routeError.textContent = "Pasirinkite kryptį";
-  if (route.value === "route-not-selected") {
-    isValid = false;
-  } else {
-    routeError.textContent = "";
-  }
-  //Date Validation
-  const day = document.getElementById("day");
-  const dateError = document.getElementById("date-error");
-  if (day.value === "") {
-    dateError.textContent = "Pasirinkite užsakymo paėmimo dieną";
-    isValid = false;
-  } else {
-    dateError.textContent = "";
-  }
+  isValid &= validateSelection("route", "route-error");
+
+  // Date Validation
+  isValid &= validateSelection("day", "date-error");
+
   // Order Email Validation
-  const orderEmail = document.getElementById("order-email");
-  const orderEmailError = document.getElementById("order-email-error");
-  if (
-    !orderEmail.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
-  ) {
-    orderEmailError.textContent = "Neteisingas el. pašto formatas.";
-    isValid = false;
-  } else {
-    orderEmailError.textContent = "";
-  }
+  isValid &= validateEmail("order-email", "order-email-error");
 
   // Payer Validation
-  const payer = document.getElementById("payer");
-  const payerError = document.getElementById("payer-error");
-  if (!payer.value) {
-    payerError.textContent = "Pasirinkite mokėtoją.";
-    isValid = false;
-  } else {
-    payerError.textContent = "";
-  }
+  isValid &= validateSelection("payer", "payer-error");
 
   // Payment Type Validation
-  const paymentType = document.getElementById("payment-type");
-  const paymentTypeError = document.getElementById("payment-type-error");
-  if (!paymentType.value) {
-    paymentTypeError.textContent = "Pasirinkite atsiskaitymo tipą.";
-    isValid = false;
-  } else {
-    paymentTypeError.textContent = "";
-  }
+  isValid &= validateSelection("payment-type", "payment-type-error");
 
-  // Invoice Fields Validation (only if the checkbox is checked)
+  // Invoice Fields Validation
   const invoiceCheckbox = document.getElementById("invoice-checkbox");
   if (invoiceCheckbox.checked) {
-    const companyName = document.getElementById("company-name");
-    const companyNameError = document.getElementById("company-name-error");
-    if (companyName.value.length < 3) {
-      companyNameError.textContent =
-        "Įmonės pavadinimas turi būti bent 3 simboliai.";
-      isValid = false;
-    } else {
-      companyNameError.textContent = "";
-    }
-
-    const companyCode = document.getElementById("company-code");
-    const companyCodeError = document.getElementById("company-code-error");
-    if (!companyCode.value) {
-      companyCodeError.textContent = "Įveskite įmonės kodą.";
-      isValid = false;
-    } else {
-      companyCodeError.textContent = "";
-    }
-
-    const companyAddress = document.getElementById("company-address");
-    const companyAddressError = document.getElementById(
-      "company-address-error"
-    );
-    if (!validateAddress(companyAddress.value)) {
-      companyAddressError.textContent =
-        "Adresas turi turėti miestą, gatvę ir pastato numerį.";
-      isValid = false;
-    } else {
-      companyAddressError.textContent = "";
-    }
-
-    const companyEmail = document.getElementById("company-email");
-    const companyEmailError = document.getElementById("company-email-error");
-    if (
-      !companyEmail.value.match(
-        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-      )
-    ) {
-      companyEmailError.textContent = "Neteisingas el. pašto formatas.";
-      isValid = false;
-    } else {
-      companyEmailError.textContent = "";
-    }
+    isValid &= validateLength("company-name", "company-name-error");
+    isValid &= validateLength("company-code", "company-code-error");
+    isValid &= validateAddress("company-address", "company-address-error");
+    isValid &= validateEmail("company-email", "company-email-error");
   }
+
   // Parcels Weight Validation
   const parcels = document.querySelectorAll(".parcel input");
-  const parcelError = document.getElementById("parcel-error");
-  let allWeightsValid = true;
-  parcels.forEach((parcel) => {
-    if (!isValidWeight(parcel.value)) {
-      allWeightsValid = false;
-    }
+  parcels.forEach(parcel => {
+    isValid &= validateWeight(parcel.id, "parcel-error");
   });
 
-  if (!allWeightsValid) {
-    parcelError.textContent =
-      "Prašome įvesti teisingą svorį kiekvienai siuntai. Minimalus svoris yra 0.1.";
-    isValid = false;
-  } else {
-    parcelError.textContent = "";
-  }
-  const submitErrorField = document.getElementById("submit-error");
-  if (!isValid) {
-    submitErrorField.textContent = "Formoje yra klaidų. Prašome patikrinti.";
-  } else {
-    submitErrorField.textContent = "";
-  }
-  const packingErrorField = document.getElementById("packing-rules-error")
-  const shippingErrorField = document.getElementById("shipping-rules-error")
-  const packingField = document.getElementById("packing-rules")
-  const shippingField = document.getElementById("shipping-rules")
+  // Packing Rules Checkbox Validation
+  isValid &= validateCheckbox("packing-rules", "packing-rules-error");
 
-  if (!packingField.checked){
-    packingErrorField.textContent=
-    "Prašome susipažinti ir sutikti su siuntos pakavimo taisyklėmis"
-    isValid = false
-  }else{
-    packingErrorField.textContent=""
-  }
-  if (!shippingField.checked){
-    shippingErrorField.textContent=
-    "Prašome susipažinti ir sutikti su siuntos pakavimo taisyklėmis"
-    isValid = false
-  }else{
-    shippingErrorField.textContent=""
-  }
+  // Shipping Rules Checkbox Validation
+  isValid &= validateCheckbox("shipping-rules", "shipping-rules-error");
 
   return isValid;
 }
+function attachInputListener(inputId, validator, errorId) {
+  const inputElement = document.getElementById(inputId);
+  const errorElement = document.getElementById(errorId);
+
+  inputElement.addEventListener('input', function() {
+    validator(inputId, errorId);
+  });
+}
+
+// Attach event listeners to input fields
+attachInputListener("sender-name", validateLength, "sender-name-error");
+attachInputListener("sender-surname", validateLength, "sender-surname-error");
+attachInputListener("sender-phone", validatePhone, "sender-phone-error");
+attachInputListener("sender-email", validateEmail, "sender-email-error");
+attachInputListener("sender-address", validateAddress, "sender-address-error");
+
+attachInputListener("receiver-name", validateLength, "receiver-name-error");
+attachInputListener("receiver-surname", validateLength, "receiver-surname-error");
+attachInputListener("receiver-phone", validatePhone, "receiver-phone-error");
+attachInputListener("receiver-email", validateEmail, "receiver-email-error");
+attachInputListener("receiver-address", validateAddress, "receiver-address-error");
+
+attachInputListener("route", validateSelection, "route-error");
+attachInputListener("day", validateSelection, "date-error");
+attachInputListener("order-email", validateEmail, "order-email-error");
+attachInputListener("payer", validateSelection, "payer-error");
+attachInputListener("payment-type", validateSelection, "payment-type-error");
+
+const invoiceCheckbox = document.getElementById("invoice-checkbox");
+if (invoiceCheckbox.checked) {
+  attachInputListener("company-name", validateLength, "company-name-error");
+  attachInputListener("company-code", validateLength, "company-code-error");
+  attachInputListener("company-address", validateAddress, "company-address-error");
+  attachInputListener("company-email", validateEmail, "company-email-error");
+}
+
+const parcels = document.querySelectorAll(".parcel input");
+parcels.forEach(parcel => {
+  attachInputListener(parcel.id, validateWeight, "parcel-error");
+});
+
+attachInputListener("packing-rules", validateCheckbox, "packing-rules-error");
+attachInputListener("shipping-rules", validateCheckbox, "shipping-rules-error");

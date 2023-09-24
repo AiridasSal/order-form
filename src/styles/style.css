@@ -188,7 +188,8 @@ h1 {
 
 input,
 select,
-button {
+button,
+textarea{
   padding: 10px 0px;
   border-radius: 5px;
   font-size: 14px;
@@ -204,7 +205,8 @@ button {
 }
 input:focus,
 select:focus,
-button:focus {
+button:focus,
+textarea:focus {
   border: 0.5px #9ba61e88 solid;
   outline: 0.5px #9ba61e88 solid;
 }
@@ -297,4 +299,8 @@ input[type="checkbox"]:focus {
 }
 #date-error{
   flex: 100%;
+}
+.error {
+  border: 0.5px rgba(255, 0, 0, 0.5) solid;
+  outline: 0.5px rgba(255, 0, 0, 0.5) solid;
 }
