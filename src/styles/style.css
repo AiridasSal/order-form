@@ -179,8 +179,6 @@ h1 {
 }
 
 .additional-container {
-  display: flex;
-  flex-direction: column;
   gap: 20px;
 }
 #estimated-price {
