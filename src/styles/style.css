@@ -37,6 +37,10 @@
     flex-wrap: wrap;
     justify-content: end;
   }
+  .additional-container {
+  flex-direction:row;
+  display: flex;
+  }
   .comment-container {
     width: 100%;
     display: flex;
