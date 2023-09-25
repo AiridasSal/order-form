@@ -50,32 +50,34 @@ routeDropdown.addEventListener('change', function() {
   const year = yearDropdown.value;
   const month = monthDropdown.value - 1;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-
   const currentDay = today.getDate();
 
-for (let i = 1; i <= daysInMonth; i++) {
-  const day = new Date(year, month, i);
+  for (let i = 1; i <= daysInMonth; i++) {
+    const day = new Date(year, month, i);
 
-  if (month == currentMonth && i < currentDay) {
-    continue;
-  }
+    if (month == currentMonth && i < currentDay) {
+      continue;
+    }
 
-  if (routeDropdown.value == 'LT-UK' && day.getDay() == 2) {
-    const dayOption = document.createElement('option');
-    dayOption.value = `${i}-${i + 1}`;
-      dayOption.text = `${i}-${i + 1}`;
-    dayDropdown.appendChild(dayOption);
-  }
+    if (routeDropdown.value == 'LT-UK' && day.getDay() == 2) {
+      if (i + 1 <= daysInMonth) { // Check if the next day is within the month
+        const dayOption = document.createElement('option');
+        dayOption.value = `${i}-${i + 1}`;
+        dayOption.text = `${i}-${i + 1}`;
+        dayDropdown.appendChild(dayOption);
+      }
+    }
 
-  if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && i + 1 <= daysInMonth && new Date(year, month, i + 1).getDay() == 6) {
-    // Check if the Saturday is in the past
-    if (!(month == currentMonth && i + 1 < currentDay)) {
-      const dayOption = document.createElement('option');
-      dayOption.value = `${i}-${i + 1}`;
-      dayOption.text = `${i}-${i + 1}`;
-      dayDropdown.appendChild(dayOption);
+    if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && i + 1 <= daysInMonth && new Date(year, month, i + 1).getDay() == 6) {
+      // Check if the Saturday is in the past
+      if (!(month == currentMonth && i + 1 < currentDay)) {
+        const dayOption = document.createElement('option');
+        dayOption.value = `${i}-${i + 1}`;
+        dayOption.text = `${i}-${i + 1}`;
+        dayDropdown.appendChild(dayOption);
+      }
     }
   }
-}});
+});
 
 routeDropdown.dispatchEvent(new Event('change'));
