@@ -19,7 +19,7 @@ function createValidator(condition, errorMessage) {
 const validateLength = createValidator(value => value.length >= 3, "Vardas ir pavardė privalo turėti ne mažiau kaip 3 simbolius.");
 const validatePhone = createValidator(value => /^\+\d+/.test(value), 'Neteisingas telefono formatas. Turi prasidėti nuo "+" ir sekti skaičiai, pvz., +370 arba +44.');
 const validateEmail = createValidator(value => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value), "Neteisingas el. pašto formatas, pvz., info@ecotrip.lt.");
-const validateAddress = createValidator(value => /([A-Za-zėūĄČĘĖĮŠŲŪŽąčęėįšųūž\s.,]+) \s*([\d\/A-Za-z\s]+) \s*([\d\/A-Za-z\s,]+)/.test(value), "Neteisingas adreso formatas. Adresas turi turėti miestą, gatvę ir pastato numerį.");
+const validateAddress = createValidator(value => /([A-Za-z\s]+) \s*([\d\/A-Za-z\s]+) \s*([\d\/A-Za-z\s]+)/.test(value), "Neteisingas adreso formatas. Adresas turi turėti miestą, gatvę ir pastato numerį.");
 const validateSelection = createValidator(value => value !== "route-not-selected" && value !== "", "Būtina pasirinkti variantą.");
 const validateCheckbox = createValidator(value => value, "Būtina pažymėti langelį.");
 const validateWeight = createValidator(value => {
@@ -95,13 +95,13 @@ attachInputListener("sender-name", validateLength, "sender-name-error");
 attachInputListener("sender-surname", validateLength, "sender-surname-error");
 attachInputListener("sender-phone", validatePhone, "sender-phone-error");
 attachInputListener("sender-email", validateEmail, "sender-email-error");
-attachInputListener("sender-address", validateAddress, "sender-address-error");
+// attachInputListener("sender-address", validateAddress, "sender-address-error");
 
 attachInputListener("receiver-name", validateLength, "receiver-name-error");
 attachInputListener("receiver-surname", validateLength, "receiver-surname-error");
 attachInputListener("receiver-phone", validatePhone, "receiver-phone-error");
 attachInputListener("receiver-email", validateEmail, "receiver-email-error");
-attachInputListener("receiver-address", validateAddress, "receiver-address-error");
+// attachInputListener("receiver-address", validateAddress, "receiver-address-error");
 
 attachInputListener("route", validateSelection, "route-error");
 attachInputListener("day", validateSelection, "date-error");
