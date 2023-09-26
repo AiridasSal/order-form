@@ -1,10 +1,23 @@
 const today = new Date();
-
+const monthNames = [
+  'sausio',
+  'vasario',
+  'kovo',
+  'balandžio',
+  'gegužės',
+  'birželio',
+  'liepos',
+  'rugpjūčio',
+  'rugsėjo',
+  'spalio',
+  'lapkričio',
+  'gruodžio'
+];
 const routeDropdown = document.getElementById('route');
 const yearDropdown = document.getElementById('year');
 const monthDropdown = document.getElementById('month');
 const dayDropdown = document.getElementById('day');
-
+const deliveryDate = document.getElementById('delivery-date')
 const dateLabels = document.querySelectorAll('.date-label');
 
 const currentYear = today.getFullYear();
@@ -79,5 +92,45 @@ routeDropdown.addEventListener('change', function() {
     }
   }
 });
+dayDropdown.addEventListener('change', function() {
+  if (dayDropdown.value) {
+    const [startDay, endDay] = dayDropdown.value.split('-').map(Number);
+    
+    const selectedMonthIndex = monthDropdown.value - 1;
+    const selectedYear = parseInt(yearDropdown.value);
+    
+    const daysInMonth = new Date(selectedYear, selectedMonthIndex + 1, 0).getDate();
+    
+    let newStartDay = startDay + 3;
+    let newEndDay = endDay + 3;
+    
+    let deliveryStartMonthIndex = selectedMonthIndex;
+    let deliveryEndMonthIndex = selectedMonthIndex;
+    
+    if (newEndDay > daysInMonth) {
+      newEndDay = newEndDay - daysInMonth;
+      deliveryEndMonthIndex = (deliveryEndMonthIndex + 1) % 12;
+    }
+    
+    if (newStartDay > daysInMonth) {
+      newStartDay = newStartDay - daysInMonth;
+      deliveryStartMonthIndex = (deliveryStartMonthIndex + 1) % 12;
+    }
+    
+    let deliveryDateString;
+    if (deliveryStartMonthIndex === deliveryEndMonthIndex) {
+      deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
+    } else {
+      deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${monthNames[deliveryEndMonthIndex]} ${newEndDay}d.`;
+    }
+    
+    deliveryDate.textContent = `Numatoma užsakymo pristatymo data: ${deliveryDateString}`;
+  } else {
+    deliveryDate.textContent = '';
+  }
+});
+
+
 
 routeDropdown.dispatchEvent(new Event('change'));
+
