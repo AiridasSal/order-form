@@ -313,3 +313,16 @@ input[type="checkbox"]:focus {
   border: 0.5px rgba(166, 39, 30,0.61) solid;
   outline: 0.5px rgba(166, 39, 30,0.61) solid;
 }
+#message-container{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  justify-self: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+#order-confirmed{
+ max-width: 1120px;
+ padding: 0px 50px;
+ text-align: justify;
+}

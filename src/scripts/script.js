@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('parcel-form');
   const submitButton = form.querySelector('[type="submit"]');
   const loader = document.getElementById('loader');
-  const messageContainer = document.createElement('div');
-  messageContainer.classList.add('message-container');
+  const orderConfirmed = document.getElementById('order-confirmed');
+  orderConfirmed.classList.add('message-container');
   form.addEventListener('submit', async function(event) {
     event.preventDefault();
     submitButton.disabled = true;
@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.ok) {
               // Display a message in Lithuanian
-              messageContainer.innerText = "Užsakymas sėkmingai užregistruotas. Nurodytu el. paštu netrukus gausite užsakymo patvirtinimą ir papildomą informaciją. Jeigu negausite laiško, prašome susisiekti su 'EcoTrip' telefonu +37060122060 arba +447479622299";
-              document.body.appendChild(messageContainer);
+              orderConfirmed.innerText = `Užsakymas sėkmingai užregistruotas. Nurodytu el. paštu netrukus gausite užsakymo patvirtinimą ir papildomą informaciją. Jeigu negausite laiško, prašome susisiekti su 'EcoTrip' telefonu +37060122060 arba +447479622299`;
+              form.reset();
             } else {
               form.style.display = 'block';
               console.error('Failed to post data:', response.statusText);
@@ -91,11 +91,4 @@ document.addEventListener('DOMContentLoaded', function() {
       loader.classList.add('hidden');
     }
   });
-});
-// Inside the iframe content
-document.addEventListener('input', function() {
-  window.parent.postMessage('resizeIframe', '*');
-});
-document.addEventListener('click', function() {
-  window.parent.postMessage('resizeIframe', '*');
 });
