@@ -270,6 +270,7 @@ hr {
   color: white;
   background-color: #9aa61e;
   width: 48%;
+  margin-top: 30px;
 }
 input[type="checkbox"] {
   width: 20px;
