@@ -56,13 +56,13 @@ function validateForm() {
   isValid &= validateLength("sender-surname", "sender-surname-error");
   isValid &= validatePhone("sender-phone", "sender-phone-error");
   isValid &= validateEmail("sender-email", "sender-email-error");
-  isValid &= validateAddress("sender-address", "sender-address-error");
+  // isValid &= validateAddress("sender-address", "sender-address-error");
   
   isValid &= validateLength("receiver-name", "receiver-name-error");
   isValid &= validateLength("receiver-surname", "receiver-surname-error");
   isValid &= validatePhone("receiver-phone", "receiver-phone-error");
   isValid &= validateEmail("receiver-email", "receiver-email-error");
-  isValid &= validateAddress("receiver-address", "receiver-address-error");
+  // isValid &= validateAddress("receiver-address", "receiver-address-error");
   
   // Route Validation
   isValid &= validateSelection("route", "route-error");
