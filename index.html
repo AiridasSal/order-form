@@ -5,8 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delivery Form</title>
     <link rel="stylesheet" href="./src/styles/style.css">
+    <link rel="stylesheet" href="./src/styles/header.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/b8f8a11208.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <header id="nav-menu" aria-label="navigation bar">
+    <div class="header-container">
+      <span>
+      <div class="nav-start">
+        <div class="logo-container">
+            <a class="logo" href="/">
+                <img src="https://ecotrip.lt/wp-content/uploads/2019/04/Logotipas-su-apvadu_Eco-trip_spalvotas-e1695641846819.png" width="60" height="60" alt="Inc Logo" />
+            </a>
+        </div>
+        
+        <nav class="menu">
+          <ul class="menu-bar">
+            <!-- <li><a class="nav-link" href="https://ecotrip.lt">Titulinis</a></li> -->
+            <li>
+              <button class="nav-link dropdown-btn" data-dropdown="dropdown2" aria-haspopup="true" aria-expanded="false" aria-label="discover">
+                Paslaugos
+                <i class="bx bx-chevron-down" aria-hidden="true"></i>
+              </button>
+              <div id="dropdown2" class="dropdown">
+                <ul role="menu">
+                    <li role="menuitem">
+                        <a class="dropdown-link" href="https://ecotrip.lt/siuntu-pristatymas">Siuntų pristaymas</a>
+                      </li>
+                  <li role="menuitem">
+                    <a class="dropdown-link" href="https://ecotrip.lt/kroviniu-pervezimas">Krovinių pervežimas</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-link" href="https://ecotrip.lt/perkraustymas">Perkraustymas</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-link" href="#https://ecotrip.lt/pristatymas-is-parduotiviu">Pristatymas iš parduotuvių</a>
+                  </li>
+                </ul>
+                                  </div>
+            </li>
+            <li>
+                <button class="nav-link dropdown-btn" data-dropdown="dropdown3" aria-haspopup="true" aria-expanded="false" aria-label="discover">
+                  Naudinga informacija
+                  <i class="bx bx-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div id="dropdown3" class="dropdown">
+                  <ul role="menu">
+                      <li role="menuitem">
+                          <a class="dropdown-link" href="">Kalendorius</a>
+                        </li>
+                    <li role="menuitem">
+                      <a class="dropdown-link" href="https://ecotrip.lt/apie-mus">Apie mus</a>
+                    </li>
+                    <li role="menuitem">
+                      <a class="dropdown-link" href="https://ecotrip.lt/kontaktai">Kontaktai</a>
+                    </li>
+                    <li role="menuitem">
+                      <a class="dropdown-link" href="https://ecotrip.lt/duk">D.U.K</a>
+                    </li>
+                    <li role="menuitem">
+                        <a class="dropdown-link" href="https://ecotrip.lt/siuntos-pakavimo-ir-zenklinimo-taisykles">Pakavimo ir ženklinimo <br>taisyklės</a>
+                      </li>
+                  </ul>
+                                    </div>
+              </li>
+              <li><a class="nav-link" href="https://ecotrip.lt/kainos">Paslaugų kainos</a></li>
+            <li><a class="nav-link" href="https://ecotrip.lt/es-parama">Es parama</a></li>
+              <li>
+                <button class="nav-link dropdown-btn" data-dropdown="dropdown4" aria-haspopup="true" aria-expanded="false" aria-label="discover">
+                  Susisiek
+                  <i class="bx bx-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div id="dropdown4" class="dropdown">
+                    <ul role="menu">
+                        <!-- New elements from sub-header -->
+                        <li role="menuitem">
+                            <a href="tel:+37060122060">
+                                <i class="bx bx-phone"></i>
+                                +370 601 22060
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="tel:+447479622299">
+                                <i class="bx bx-phone"></i>
+                                +447 479622299
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="skype:%2B37060122060?chat" target="_blank">
+                                <i class="bx bxl-skype"></i> Skype
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="https://wa.me/37060122060" target="_blank">
+                                <i class="bx bxl-whatsapp"></i> WhatsApp
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a href="viber://contact?number=%2B37060122060" target="_blank">
+                                <i class="fa-brands fa-viber"></i> Viber
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                
+              </li>
+            
+          </ul>
+          
+        </nav>
+        <button class="registration-button">
+            <a href="http://ecotrip.lt/siuntos-registravimas/" id="reg-link">
+                SIUNTOS REGISTRACIJA
+            </a>
+        </button>
+        <button id="hamburger" aria-label="hamburger" aria-haspopup="true" aria-expanded="false" onclick="onMenuClick()">
+            <i class="bx bx-menu" id="menuIcon" aria-hidden="true"></i>
+        </button>
+
+      </div>
+    </span>
+      
+    </div>
+    
+  </header>
     <form id="parcel-form" novalidate>
         <h1>Siuntos registracija ir užsakymas</h1>
         <hr>
@@ -402,6 +526,54 @@
         </div>
 
     </form>
+    <footer>
+      <div class="footer-section">
+        <span class="footer-title"> <h4>Pervežimai Lietuvoje</h4> </span>
+          
+          <ul>
+              <li>Krovinių pervežimas</li>
+              <li>Siuntų gabenimas</li>
+              <li>Pristatymas iš parduotuvių</li>
+              <li>Vežimo taisyklės</li>
+          </ul>
+      </div>
+      <div class="footer-section">
+        <span class="footer-title"> <h4>Pervežimai užsienyje</h4> </span>
+          
+          <ul>
+              <li>Krovinių pervežimas​</li>
+              <li>Siuntų gabenimas</li>
+              <li>Perkraustymo paslaugos</li>
+              <li>Siuntos pakavimo ir ženklinimo taisyklės</li>
+              <li>Vežimo taisyklės</li>
+          </ul>
+      </div>
+      <span class="footer-title">  </span><div class="footer-section"> 
+        <span class="footer-title"> <h4>Pervežimai užsienyje</h4> </span>
+          <p>+370 601 22060</p>
+          <p>+370 647 57542</p>
+          <p>info@ecotrip.lt</p>
+          <p>Minijos g. 152 b,93263 Klaipėda</p>
+          <div class="social-icons">
+              <a href="#" class="facebook-f">Facebook</a>
+              <a href="#" class="linkedin">LinkedIn</a>
+              <a href="#" class="instagram">Instagram</a>
+          </div>
+      </div>
+      <div class="footer-section">
+        <span class="footer-title"> <h4>NAUJIENLAIŠKIS</h4></span>
+        <p>Mūsų naujienos ir specialūs pasiūlymai prenumeratoriams.</p>
+
+          <form action="#" method="post">
+              <label for="email">El. paštas:</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email">
+              <button type="submit">Prenumeruoti</button>
+          </form>
+      </div>
+  </footer>
+  
+    <script src="./src/scripts/header.js"></script>
+
     <script src="./src/scripts/script.js"></script>
     <script src="./src/scripts/datepicker.js"></script>
     <script src="./src/scripts/validation.js"></script>
