@@ -21,7 +21,28 @@ const validatePhone = createValidator(value => /^\+\d+/.test(value), 'Neteisinga
 const validateEmail = createValidator(value => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value), "Neteisingas el. pašto formatas, pvz., info@ecotrip.lt.");
 const validateAddress = createValidator(value => /([A-Za-z\s]+) \s*([\d\/A-Za-z\s]+) \s*([\d\/A-Za-z\s]+)/.test(value), "Neteisingas adreso formatas. Adresas turi turėti miestą, gatvę ir pastato numerį.");
 const validateSelection = createValidator(value => value !== "route-not-selected" && value !== "", "Būtina pasirinkti variantą.");
+function createValidator(condition, errorMessage) {
+  return function (inputId, errorId) {
+    const inputElement = document.getElementById(inputId);
+    const errorElement = document.getElementById(errorId);
+    
+    // Check if the element is a checkbox, if so, use the checked property, else use the value property
+    const valueToCheck = inputElement.type === 'checkbox' ? inputElement.checked : inputElement.value;
+    
+    if (!condition(valueToCheck)) {
+      errorElement.textContent = errorMessage;
+      inputElement.classList.add("error");
+      return false;
+    } else {
+      errorElement.textContent = "";
+      inputElement.classList.remove("error");
+      return true;
+    }
+  };
+}
+
 const validateCheckbox = createValidator(value => value, "Būtina pažymėti langelį.");
+
 const validateWeight = createValidator(value => {
   const weightValue = parseFloat(value);
   return weightValue >= 0.1 && weightValue === Math.abs(weightValue);

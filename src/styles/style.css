@@ -109,6 +109,7 @@
 @media screen and (max-width: 767px) {
   form {
     font-family: Arial, Helvetica, sans-serif;
+    padding: 0px 10px;
   }
   .route {
     display: flex;
@@ -140,6 +141,14 @@
   #invoice-fields {
     flex-direction: column;
     flex-wrap: wrap;
+  }
+  .terms-and-conditions .invoice-checkbox-container {
+    display: flex;
+    align-items: center;
+  }
+  .terms-and-conditions .invoice-checkbox-container  label{
+    margin: 0;
+    padding-left: 10px;
   }
 }
 .full-width {
@@ -200,10 +209,13 @@ textarea {
   border: 0.5px rgba(0, 0, 0, 0.5) solid;
   background-color: white;
 }
+
 #comment {
   padding: 10px;
   resize: none;
   border: 0.5px rgba(0, 0, 0, 0.1) solid;
+  margin-bottom: 30px;
+
 }
 #delivery-date, #estimated-price {
   color: #9aa61e;
@@ -236,6 +248,7 @@ label {
 }
 hr {
   margin-bottom: 15px;
+  color: #7a7776;
 }
 .input-explanation {
   color: rgb(122, 119, 118);
@@ -287,6 +300,7 @@ input[type="checkbox"]:focus {
 .invoice-checkbox-container {
   font-size: 14px;
 }
+
 .invoice-checkbox-container a {
   color: #9aa61e;
   text-decoration: underline;
