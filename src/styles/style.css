@@ -197,7 +197,7 @@ textarea {
   padding-left: 10px;
   color: rgba(122, 119, 118);
   font-weight: 400;
-  border: 0.5px rgba(0, 0, 0, 0.1) solid;
+  border: 0.5px rgba(0, 0, 0, 0.5) solid;
   background-color: white;
 }
 #comment {
