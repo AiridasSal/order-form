@@ -83,7 +83,6 @@ function validateForm() {
   const invoiceCheckbox = document.getElementById("invoice-checkbox");
   if (invoiceCheckbox.checked) {
     isValid &= validateLength("company-name", "company-name-error");
-    isValid &= validateLength("company-code", "company-code-error");
     isValid &= validateAddress("company-address", "company-address-error");
     isValid &= validateEmail("company-email", "company-email-error");
   }
@@ -133,7 +132,6 @@ attachInputListener("payment-type", validateSelection, "payment-type-error");
 const invoiceCheckbox = document.getElementById("invoice-checkbox");
 if (invoiceCheckbox.checked) {
   attachInputListener("company-name", validateLength, "company-name-error");
-  attachInputListener("company-code", validateLength, "company-code-error");
   attachInputListener("company-address", validateAddress, "company-address-error");
   attachInputListener("company-email", validateEmail, "company-email-error");
 }

@@ -225,6 +225,7 @@
               <div class="error-message" id="payment-type-error"></div>
             </div>
             </div>
+          
         </div>
             <div id="estimated-price">Numatoma užsakymo kaina: €0.00</div>
             <div class="invoice-checkbox-container">
@@ -245,17 +246,18 @@
             <div class="additional-fields-container">    
               <div id="invoice-fields" style="display: none">
                 <div class="invoice-fields-item">
-                <label for="company-name">Įmonės pavadinimas</label>
+                <label for="company-name">Gavėjo pavadinimas</label>
                 <input
                   type="text"
                   id="company-name"
                   name="company-name"
-                  placeholder="Įveskite įmonės pavadinimą"
+                  placeholder="Vardas ir pavardė arba įmonės pavadinimas"
                 />
+                <!-- <p class="input-explanation">Jeigu esate ne įmonė, įveskite vardą ir pavardę</p> -->
                 <div class="error-message" id="company-name-error"></div>
               </div>
                 <div class="invoice-fields-item">
-                <label for="company-code">Įmonės kodas</label>
+                <label for="company-code">Įmonės kodas ( juridiniams asmenims )</label>
                 <input
                   type="text"
                   id="company-code"
@@ -265,22 +267,22 @@
                 <div class="error-message" id="company-code-error"></div>
               </div>
                 <div class="invoice-fields-item">
-                <label for="company-email">Įmonės el. paštas</label>
+                <label for="company-email">Gavėjo el. paštas</label>
                 <input
                   type="email"
                   id="company-email"
                   name="company-email"
-                  placeholder="Įveskite įmonės el paštą"
+                  placeholder="Įveskite gavėjo el paštą"
                 />
                 <div class="error-message" id="company-email-error"></div>
               </div>
                 <div class="invoice-fields-item">
-                <label for="company-address">Įmonės adresas</label>
+                <label for="company-address">Gavėjo adresas</label>
                 <input
                   type="text"
                   id="company-address"
                   name="company-address"
-                  placeholder="Įveskite įmonės adresą"
+                  placeholder="Įveskite gavėjo adresą"
                 />
                 <div class="error-message" id="company-address-error"></div>
               </div>
