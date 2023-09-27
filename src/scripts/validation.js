@@ -20,7 +20,7 @@ const validateLength = createValidator(value => value.length >= 3, "Vardas ir pa
 const validatePhone = createValidator(value => /^\+\d+/.test(value), 'Neteisingas telefono formatas. Turi prasidėti nuo "+" ir sekti skaičiai, pvz., +370 arba +44.');
 const validateEmail = createValidator(value => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value), "Neteisingas el. pašto formatas, pvz., info@ecotrip.lt.");
 const validateAddress = createValidator(value => /([A-Za-z\s]+) \s*([\d\/A-Za-z\s]+) \s*([\d\/A-Za-z\s]+)/.test(value), "Neteisingas adreso formatas. Adresas turi turėti miestą, gatvę ir pastato numerį.");
-const validateSelection = createValidator(value => value !== "route-not-selected" && value !== "", "Būtina pasirinkti variantą.");
+const validateSelection = createValidator(value => value !== "route-not-selected" && value !== "", "Laukeliai yra privalomi, pašome pasirinkti.");
 function createValidator(condition, errorMessage) {
   return function (inputId, errorId) {
     const inputElement = document.getElementById(inputId);
@@ -41,7 +41,7 @@ function createValidator(condition, errorMessage) {
   };
 }
 
-const validateCheckbox = createValidator(value => value, "Būtina pažymėti langelį.");
+const validateCheckbox = createValidator(value => value, "Prašome pažymėti, kad sutinkate su EcoTrip taisyklėmis.");
 
 const validateWeight = createValidator(value => {
   const weightValue = parseFloat(value);
