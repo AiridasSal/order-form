@@ -1,4 +1,3 @@
-
 @media screen and (min-width: 767px) {
   form {
     max-width: 1120px;
@@ -38,8 +37,8 @@
     justify-content: end;
   }
   .additional-container {
-  flex-direction:row;
-  display: flex;
+    flex-direction: row;
+    display: flex;
   }
   .comment-container {
     width: 100%;
@@ -61,7 +60,6 @@
   .additional-fields-container {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
   }
   .additional-fields-item {
     display: flex;
@@ -102,47 +100,50 @@
     flex-wrap: wrap;
     column-gap: 20px;
   }
-  .invoice-checkbox-container{
+  .invoice-checkbox-container {
     display: flex;
     justify-content: end;
     align-items: center;
-}
+  }
 }
 @media screen and (max-width: 767px) {
-  form{
+  form {
     font-family: Arial, Helvetica, sans-serif;
-
   }
-.route{
+  .route {
     display: flex;
     flex-direction: column;
-}
-.date-fields{
+  }
+  .date-fields {
     display: flex;
     flex-wrap: wrap;
     column-gap: 20px;
-    
-}
-.parcel{
+  }
+  .parcel {
     display: flex;
     flex-direction: column;
-}
-.parcel-items{
+  }
+  .parcel-items {
     display: flex;
     flex-direction: column;
-}
-.payer-information, .additional-fields-item, .container, .invoice-fields-item, .input-group, .comment-container{
+  }
+  .payer-information,
+  .additional-fields-item,
+  .container,
+  .invoice-fields-item,
+  .input-group,
+  .comment-container {
     display: flex;
     flex-direction: column;
-}
+  }
 
-#invoice-fields{
+  #invoice-fields {
     flex-direction: column;
     flex-wrap: wrap;
+  }
 }
-}
-.full-width{
-    flex: 100%;
+.full-width {
+  flex: 100%;
 }
 h1 {
   font-size: 36px;
@@ -189,7 +190,7 @@ h1 {
 input,
 select,
 button,
-textarea{
+textarea {
   padding: 10px 0px;
   border-radius: 5px;
   font-size: 14px;
@@ -204,13 +205,15 @@ textarea{
   resize: none;
   border: 0.5px rgba(0, 0, 0, 0.1) solid;
 }
-#delivery-date{
+#delivery-date {
   color: #9aa61e;
+  flex: 100%;
 }
-#submit-form:hover{
+#submit-form:hover {
   background-color: white;
   color: rgb(154, 166, 30);
-  box-shadow: 0 2px 15px -3px rgba(154, 166, 30, 0.07), 0 10px 20px -2px rgba(154, 166, 30, 0.04)
+  box-shadow: 0 2px 15px -3px rgba(154, 166, 30, 0.07),
+    0 10px 20px -2px rgba(154, 166, 30, 0.04);
 }
 input:focus,
 select:focus,
@@ -235,13 +238,12 @@ hr {
   margin-bottom: 15px;
 }
 .input-explanation {
-  color: rgba(122, 119, 118, 0.5);
+  color: rgb(122, 119, 118);
   font-size: 12px;
   padding-left: 10px;
 }
 .error-message {
-  color: rgba(166, 39, 30,0.61);
-  /* margin: 10px; */
+  color: rgba(166, 39, 30, 0.61);
   padding-top: 5px;
   padding-left: 10px;
   font-size: 14px;
@@ -306,14 +308,14 @@ input[type="checkbox"]:focus {
 .hidden {
   display: none;
 }
-#date-error{
+#date-error {
   flex: 100%;
 }
 .error {
-  border: 0.5px rgba(166, 39, 30,0.61) solid;
-  outline: 0.5px rgba(166, 39, 30,0.61) solid;
+  border: 0.5px rgba(166, 39, 30, 0.61) solid;
+  outline: 0.5px rgba(166, 39, 30, 0.61) solid;
 }
-#message-container{
+#message-container {
   display: flex;
   text-align: center;
   justify-content: center;
@@ -321,8 +323,8 @@ input[type="checkbox"]:focus {
   width: 100%;
   flex-wrap: wrap;
 }
-#order-confirmed{
- max-width: 1120px;
- padding: 0px 50px;
- text-align: justify;
+#order-confirmed {
+  max-width: 1120px;
+  padding: 0px 50px;
+  text-align: justify;
 }

@@ -14,17 +14,17 @@ document
 
       parcelDiv.innerHTML = `
             <div class="parcel-items">
-            <label for="parcel${parcelNumber}">Papildomos siuntos Nr. ${parcelNumber} svoris </label>
-            <input class="parcel-weight" placeholder="Įveskite svorį kilogramais" type="text" id="parcel${parcelNumber}" name="parcel${parcelNumber}" oninput="updateEstimatedPrice()" />
+            <label for="parcel${parcelNumber}">Papildomos pakuotės Nr. ${parcelNumber} svoris </label>
+            <input class="parcel-weight" placeholder="Įveskite pakuotės svorį kilogramais" type="text" id="parcel${parcelNumber}" name="parcel${parcelNumber}" oninput="updateEstimatedPrice()" />
             </div>
             <div class="third-container">
-            <button id="remove-parcel" onclick="removeParcel(this)">Pašalinti papildomą siuntą</button>
+            <button id="remove-parcel" onclick="removeParcel(this)">Pašalinti papildomą pakuotę</button>
             </div>
         `;
 
       parcelContainer.appendChild(parcelDiv);
     } else {
-      alert("Maksimalus siuntų kiekis yra 10.");
+      alert("Maksimalus pakuočių kiekis yra 10.");
     }
   });
 function updateEstimatedPrice() {
