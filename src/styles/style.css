@@ -180,16 +180,19 @@ h1 {
 #remove-parcel {
   width: 100%;
   text-transform: uppercase;
-  color: #9aa61e;
-  border: 0.5px #9aa61e solid;
+
   background-color: white;
   font-weight: 700;
 }
 #add-parcel {
   margin-bottom: 12px;
+  color: #9aa61e;
+  border: 0.5px #9aa61e solid;
 }
 #remove-parcel {
   margin-top: 38px;
+  color: #a6271e;
+  border: 0.5px #a6271e solid;
 }
 
 .additional-container {
@@ -343,7 +346,7 @@ input[type="checkbox"]:focus {
   flex-wrap: wrap;
 }
 #order-confirmed {
-  max-width: 1120px;
+  max-width: 500px;
   padding: 0px 50px;
   text-align: justify;
 }
