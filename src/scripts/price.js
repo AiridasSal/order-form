@@ -39,26 +39,29 @@ function calculateEstimatedPrice(parcels, route, payer) {
 }
 
 function getBasePrice(parcels) {
-  const priceUpTo15kg = 35;
-  const price5to30kg = 45;
+  const priceUpTo5kg = 35;
+  const priceUpTo15kg = 40;
+  const priceUpTo30kg = 45;
 
   const parcelPrices = parcels.map((weight) => {
-    if (weight <= 15) {
+    if (weight <= 5) {
+      return priceUpTo5kg;
+    } esle if (weight <= 15){
       return priceUpTo15kg;
-    } else if (weight > 15 && weight <= 30) {
-      return price5to30kg;
+    } else if (weight <= 30) {
+      return priceUpTo30kg;
     } else if (weight > 30 && weight <= 50) {
-      return price5to30kg + (weight - 30) * 1.4896;
+      return price5to30kg + (weight - 30) * 1.49;
     } else if (weight > 50 && weight <= 100) {
-      return price5to30kg + (weight - 30) * 1.456;
+      return price5to30kg + (weight - 30) * 1.46;
     } else if (weight > 100 && weight <= 200) {
-      return price5to30kg + (weight - 30) * 1.344;
+      return price5to30kg + (weight - 30) * 1.36;
     } else if (weight > 200 && weight <= 400) {
       return price5to30kg + (weight - 30) * 1.12;
     } else if (weight > 400 && weight <= 600) {
-      return price5to30kg + (weight - 30) * 1.0416;
+      return price5to30kg + (weight - 30) * 1.04;
     } else {
-      return price5to30kg + (weight - 30) * 0.952;
+      return price5to30kg + (weight - 30) * 0.95;
     }
   });
 
