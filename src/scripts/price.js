@@ -46,7 +46,7 @@ function getBasePrice(parcels) {
   const parcelPrices = parcels.map((weight) => {
     if (weight <= 5) {
       return priceUpTo5kg;
-    } esle if (weight > 5 && weight <= 15){
+    } else if (weight > 5 && weight <= 15){
       return priceUpTo15kg;
     } else if (weight > 15 && weight <= 30) {
       return priceUpTo30kg;
