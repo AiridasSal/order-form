@@ -51,17 +51,17 @@ function getBasePrice(parcels) {
     } else if (weight > 15 && weight <= 30) {
       return priceUpTo30kg;
     } else if (weight > 30 && weight <= 50) {
-      return price5to30kg + (weight - 30) * 1.49;
+      return weight * 1.49;
     } else if (weight > 50 && weight <= 100) {
-      return price5to30kg + (weight - 30) * 1.46;
+      return weight * 1.46;
     } else if (weight > 100 && weight <= 200) {
-      return price5to30kg + (weight - 30) * 1.36;
+      return weight * 1.36;
     } else if (weight > 200 && weight <= 400) {
-      return price5to30kg + (weight - 30) * 1.12;
+      return weight * 1.12;
     } else if (weight > 400 && weight <= 600) {
-      return price5to30kg + (weight - 30) * 1.04;
+      return weight * 1.04;
     } else {
-      return price5to30kg + (weight - 30) * 0.95;
+      return weight * 0.95;
     }
   });
 
