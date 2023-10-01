@@ -15,7 +15,8 @@ document
       parcelDiv.innerHTML = `
             <div class="parcel-items">
             <label for="parcel${parcelNumber}">Papildomos pakuotės Nr. ${parcelNumber} svoris </label>
-            <input class="parcel-weight" placeholder="Įveskite pakuotės svorį kilogramais" type="text" id="parcel${parcelNumber}" name="parcel${parcelNumber}" oninput="updateEstimatedPrice()" />
+            <input class="parcel-weight" placeholder="Įveskite pakuotės svorį kilogramais" type="number" step="0.1"
+            pattern="^\d*\.?\d+$" id="parcel${parcelNumber}" name="parcel${parcelNumber}" oninput="updateEstimatedPrice()" />
             </div>
             <div class="third-container">
             <button id="remove-parcel" onclick="removeParcel(this)">Pašalinti papildomą pakuotę</button>

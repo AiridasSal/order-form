@@ -1,198 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EcoTrip siuntos užsakymo forma</title>
-    <link rel="stylesheet" href="./src/styles/style.css">
-    <link rel="stylesheet"  href="./src/styles/header.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' >
-    <script src="https://kit.fontawesome.com/b8f8a11208.js" crossorigin="anonymous" defer></script>
-   
-</head>
-<body>
-  <header id="nav-menu" aria-label="navigation bar">
-    <div class="header-container">
-      <span>
-      <div class="nav-start">
-        <div class="logo-container">
-            <a class="logo" href="https://ecotrip.lt">
-                <img src="https://ecotrip.lt/wp-content/uploads/2019/04/Logotipas-su-apvadu_Eco-trip_spalvotas-e1695641846819.png" width="60" height="60" alt="Inc Logo" />
-            </a>
-        </div>
-        
-        <nav class="menu">
-          <ul class="menu-bar">
-            <!-- <li><a class="nav-link" href="https://ecotrip.lt">Titulinis</a></li> -->
-            <li>
-              <button class="nav-link dropdown-btn" data-dropdown="dropdown2" aria-haspopup="true" aria-expanded="false" aria-label="discover">
-                Paslaugos
-                <i class="bx bx-chevron-down" aria-hidden="true"></i>
-              </button>
-              <div id="dropdown2" class="dropdown">
-                <ul role="menu">
-                    <li role="menuitem">
-                        <a class="dropdown-link" href="https://ecotrip.lt/siuntu-pristatymas">Siuntų pristaymas</a>
-                      </li>
-                  <li role="menuitem">
-                    <a class="dropdown-link" href="https://ecotrip.lt/kroviniu-pervezimas">Krovinių pervežimas</a>
-                  </li>
-                  <li role="menuitem">
-                    <a class="dropdown-link" href="https://ecotrip.lt/perkraustymas">Perkraustymas</a>
-                  </li>
-                  <li role="menuitem">
-                    <a class="dropdown-link" href="#https://ecotrip.lt/pristatymas-is-parduotiviu">Pristatymas iš parduotuvių</a>
-                  </li>
-                </ul>
-                                  </div>
-            </li>
-            <li>
-                <button class="nav-link dropdown-btn" data-dropdown="dropdown3" aria-haspopup="true" aria-expanded="false" aria-label="discover">
-                  Naudinga informacija
-                  <i class="bx bx-chevron-down" aria-hidden="true"></i>
-                </button>
-                <div id="dropdown3" class="dropdown">
-                  <ul role="menu">
-                      <li role="menuitem">
-                          <a class="dropdown-link" href="">Kalendorius</a>
-                        </li>
-                    <li role="menuitem">
-                      <a class="dropdown-link" href="https://ecotrip.lt/apie-mus">Apie mus</a>
-                    </li>
-                    <li role="menuitem">
-                      <a class="dropdown-link" href="https://ecotrip.lt/kontaktai">Kontaktai</a>
-                    </li>
-                    <li role="menuitem">
-                      <a class="dropdown-link" href="https://ecotrip.lt/duk">D.U.K</a>
-                    </li>
-                    <li role="menuitem">
-                        <a class="dropdown-link" href="https://ecotrip.lt/siuntos-pakavimo-ir-zenklinimo-taisykles">Pakavimo ir ženklinimo <br>taisyklės</a>
-                      </li>
-                  </ul>
-                                    </div>
-              </li>
-              <li><a class="nav-link" href="https://ecotrip.lt/kainos">Paslaugų kainos</a></li>
-            <li><a class="nav-link" href="https://ecotrip.lt/es-parama">Es parama</a></li>
-              <li>
-                <button class="nav-link dropdown-btn" data-dropdown="dropdown4" aria-haspopup="true" aria-expanded="false" aria-label="discover">
-                  Susisiek
-                  <i class="bx bx-chevron-down" aria-hidden="true"></i>
-                </button>
-                <div id="dropdown4" class="dropdown">
-                    <ul role="menu">
-                        <!-- New elements from sub-header -->
-                        <li role="menuitem">
-                            <a href="tel:+37060122060">
-                                <i class="bx bx-phone"></i>
-                                +370 601 22060
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="tel:+447479622299">
-                                <i class="bx bx-phone"></i>
-                                +447 479622299
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="skype:%2B37060122060?chat" target="_blank">
-                                <i class="bx bxl-skype"></i> Skype
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="https://wa.me/37060122060" target="_blank">
-                                <i class="bx bxl-whatsapp"></i> WhatsApp
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="viber://contact?number=%2B37060122060" target="_blank">
-                                <i class="fa-brands fa-viber"></i> Viber
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                
-              </li>
-            
-          </ul>
-          
-        </nav>
-        <button class="registration-button">
-            <a href="http://ecotrip.lt/siuntos-registravimas/" id="reg-link">
-                SIUNTOS REGISTRACIJA
-            </a>
-        </button>
-        <button id="hamburger" aria-label="hamburger" aria-haspopup="true" aria-expanded="false" onclick="onMenuClick()">
-            <i class="bx bx-menu" id="menuIcon" aria-hidden="true"></i>
-        </button>
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <link rel="stylesheet" href="./src/styles/header.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/b8f8a11208.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+  </head>
+  <body>
+    <header id="nav-menu" aria-label="navigation bar">
+      <div class="header-container">
+        <span>
+          <div class="nav-start">
+            <div class="logo-container">
+              <a class="logo" href="https://ecotrip.lt">
+                <img
+                  src="https://ecotrip.lt/wp-content/uploads/2019/04/Logotipas-su-apvadu_Eco-trip_spalvotas-e1695641846819.png"
+                  width="60"
+                  height="60"
+                  alt="Inc Logo"
+                />
+              </a>
+            </div>
 
-      </div>
-    </span>
-      
-    </div>
-    
-  </header>
-    <form id="parcel-form" novalidate >
-        <h1>Siuntos registracija ir užsakymas</h1>
-        <hr>
-        <div class="step-container">
-            <p class="step-name">1. Siuntos pervežimo kryptis ir data</p>
-            <div class="route">
-                <label for="route">Pervežimo kryptis</label>
-                <select name="route" id="route">
-                  <option value="route-not-selected" id="route-not-selected">
-                    Pasirinkite kryptį
-                  </option>
-                  <option value="LT-UK">Lietuva - Anglija</option>
-                  <option value="UK-LT">Anglija - Lietuva</option>
-                  
-                </select>
-                <p class="input-explanation">Patikrinkite, ar jūsų pasirinkta siuntos pervežimo kryptis atitinka jūsų poreikius ir yra teisinga.</p>
-                <div class="error-message" id="route-error"></div>
-                
-              </div>
-              <div class="date-fields">
-                  <label class="full-width">Siuntos paėmimo data</label>
-                 
-                    <select name="year" id="year" style="display: none"></select>
-                
-    
-                    <select name="month" id="month" style="display: none"></select>
-                
-    
-                 
-                    <select name="day" id="day" style="display: none"></select>
-                    <p  id="delivery-date" class="input-explanation"></p>
-
-                      <div class="error-message" id="date-error"></div>
-                </div>
-                
-        </div>  <hr>
-        <div class="step-container">
-            <p class="step-name">2. Pakuotės (-čių) svoris (-iai)</p>
-                <div class="parcel" id="parcelContainer">
-                 <div class="parcel-items">
-                  <label for="parcel1"
-                    >Pakuotės Nr. 1 svoris</label
+            <nav class="menu">
+              <ul class="menu-bar">
+                <!-- <li><a class="nav-link" href="https://ecotrip.lt">Titulinis</a></li> -->
+                <li>
+                  <button
+                    class="nav-link dropdown-btn"
+                    data-dropdown="dropdown2"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="discover"
                   >
-                  <input type="text" id="parcel1" class="parcel-weight" name="parcel1" placeholder="Įveskite svorį kilogramais" />
-                  <p class="input-explanation">Įveskite pakuotės svorį apytiksliai. Kai atiduosite siuntą, ji bus pasverta dar kartą patikslinimui.</p>
-                </div>
-                  <div class="third-container">
-                    <button id="add-parcel">Pridėti papildomą pakuotę</button>
+                    Paslaugos
+                    <i class="bx bx-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div id="dropdown2" class="dropdown">
+                    <ul role="menu">
+                      <li role="menuitem">
+                        <a
+                          class="dropdown-link"
+                          href="https://ecotrip.lt/siuntu-pristatymas"
+                          >Siuntų pristaymas</a
+                        >
+                      </li>
+                      <li role="menuitem">
+                        <a
+                          class="dropdown-link"
+                          href="https://ecotrip.lt/kroviniu-pervezimas"
+                          >Krovinių pervežimas</a
+                        >
+                      </li>
+                      <li role="menuitem">
+                        <a
+                          class="dropdown-link"
+                          href="https://ecotrip.lt/perkraustymas"
+                          >Perkraustymas</a
+                        >
+                      </li>
+                      <li role="menuitem">
+                        <a
+                          class="dropdown-link"
+                          href="#https://ecotrip.lt/pristatymas-is-parduotiviu"
+                          >Pristatymas iš parduotuvių</a
+                        >
+                      </li>
+                    </ul>
                   </div>
-                </div>
-                
-                
-            
-        </div> 
-        <div class="error-message" id="parcel-error"></div>
-         <hr>
-        <div class="step-container">
-            <p class="step-name">3. Mokėtojo informacija</p>
-            <div class="payer-information">
-                <div class="additional-fields-container">
-                  <div class="additional-fields-item">
+                </li>
+                <li>
+                  <button
+                    class="nav-link dropdown-btn"
+                    data-dropdown="dropdown3"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="discover"
+                  >
+                    Naudinga informacija
+                    <i class="bx bx-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div id="dropdown3" class="dropdown">
+                    <ul role="menu">
+                      <li role="menuitem">
+                        <a class="dropdown-link" href="">Kalendorius</a>
+                      </li>
+                      <li role="menuitem">
+                        <a
+                          class="dropdown-link"
+                          href="https://ecotrip.lt/apie-mus"
+                          >Apie mus</a
+                        >
+                      </li>
+                      <li role="menuitem">
+                        <a
+                          class="dropdown-link"
+                          href="https://ecotrip.lt/kontaktai"
+                          >Kontaktai</a
+                        >
+                      </li>
+                      <li role="menuitem">
+                        <a class="dropdown-link" href="https://ecotrip.lt/duk"
+                          >D.U.K</a
+                        >
+                      </li>
+                      <li role="menuitem">
+                        <a
+                          class="dropdown-link"
+                          href="https://ecotrip.lt/siuntos-pakavimo-ir-zenklinimo-taisykles"
+                          >Pakavimo ir ženklinimo <br />taisyklės</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a class="nav-link" href="https://ecotrip.lt/kainos"
+                    >Paslaugų kainos</a
+                  >
+                </li>
+                <li>
+                  <a class="nav-link" href="https://ecotrip.lt/es-parama"
+                    >Es parama</a
+                  >
+                </li>
+                <li>
+                  <button
+                    class="nav-link dropdown-btn"
+                    data-dropdown="dropdown4"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="discover"
+                  >
+                    Susisiek
+                    <i class="bx bx-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div id="dropdown4" class="dropdown">
+                    <ul role="menu">
+                      <!-- New elements from sub-header -->
+                      <li role="menuitem">
+                        <a href="tel:+37060122060">
+                          <i class="bx bx-phone"></i>
+                          +370 601 22060
+                        </a>
+                      </li>
+                      <li role="menuitem">
+                        <a href="tel:+447479622299">
+                          <i class="bx bx-phone"></i>
+                          +447 479622299
+                        </a>
+                      </li>
+                      <li role="menuitem">
+                        <a href="skype:%2B37060122060?chat" target="_blank">
+                          <i class="bx bxl-skype"></i> Skype
+                        </a>
+                      </li>
+                      <li role="menuitem">
+                        <a href="https://wa.me/37060122060" target="_blank">
+                          <i class="bx bxl-whatsapp"></i> WhatsApp
+                        </a>
+                      </li>
+                      <li role="menuitem">
+                        <a
+                          href="viber://contact?number=%2B37060122060"
+                          target="_blank"
+                        >
+                          <i class="fa-brands fa-viber"></i> Viber
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+            <button class="registration-button">
+              <a href="http://ecotrip.lt/siuntos-registravimas/" id="reg-link">
+                SIUNTOS REGISTRACIJA
+              </a>
+            </button>
+            <button
+              id="hamburger"
+              aria-label="hamburger"
+              aria-haspopup="true"
+              aria-expanded="false"
+              onclick="onMenuClick()"
+            >
+              <i class="bx bx-menu" id="menuIcon" aria-hidden="true"></i>
+            </button>
+          </div>
+        </span>
+      </div>
+    </header>
+    <div class="content-container">
+    <div id="loader" class="hidden">
+      <div class="spinner"></div>
+    </div>
+
+    <div id="previous-data-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>Would you like to use the previous order data?</p>
+        <button onclick="usePreviousData()">Yes</button>
+        <button onclick="closeModal()">No</button>
+      </div>
+    </div>
+  
+     
+    <form id="parcel-form" novalidate>
+      <h1>
+        Siuntos registracija ir užsakymas
+        <button type="button" id="load-saved-data">Kartoti paskutinį užsakymą</button>
+  
+      </h1>
+      <hr />
+      <div class="step-container">
+        <p class="step-name">1. Siuntos pervežimo kryptis ir data</p>
+        <div class="route">
+          <label for="route">Pervežimo kryptis</label>
+          <select name="route" id="route">
+            <option value="route-not-selected" id="route-not-selected">
+              Pasirinkite kryptį
+            </option>
+            <option value="LT-UK">Lietuva - Anglija</option>
+            <option value="UK-LT">Anglija - Lietuva</option>
+          </select>
+          <p class="input-explanation">
+            Patikrinkite, ar jūsų pasirinkta siuntos pervežimo kryptis atitinka
+            jūsų poreikius ir yra teisinga.
+          </p>
+          <div class="error-message" id="route-error"></div>
+        </div>
+        <div class="date-fields">
+          <label class="full-width">Siuntos paėmimo data</label>
+
+          <select name="year" id="year" style="display: none"></select>
+
+          <select name="month" id="month" style="display: none"></select>
+
+          <select name="day" id="day" style="display: none"></select>
+          <p id="delivery-date" class="input-explanation"></p>
+
+          <div class="error-message" id="date-error"></div>
+        </div>
+      </div>
+      <hr />
+      <div class="step-container">
+        <p class="step-name">2. Pakuotės (-čių) svoris (-iai)</p>
+        <div class="parcel" id="parcelContainer">
+          <div class="parcel-items">
+            <label for="parcel1">Pakuotės Nr. 1 svoris</label>
+            <input
+              type="number"
+              id="parcel1"
+              class="parcel-weight"
+              name="parcel1"
+              step="0.1"
+              pattern="^\d*\.?\d+$"
+              placeholder="Įveskite svorį kilogramais"
+            />
+            <p class="input-explanation">
+              Įveskite pakuotės svorį apytiksliai. Kai atiduosite siuntą, ji bus
+              pasverta dar kartą patikslinimui.
+            </p>
+          </div>
+          <div class="third-container">
+            <button id="add-parcel">Pridėti papildomą pakuotę</button>
+          </div>
+        </div>
+      </div>
+      <div class="error-message" id="parcel-error"></div>
+      <hr />
+      <div class="step-container">
+        <p class="step-name">3. Mokėtojo informacija</p>
+        <div class="payer-information">
+          <div class="additional-fields-container">
+            <div class="additional-fields-item">
               <label for="order-email">Užsakovo el.paštas:</label>
               <input
                 type="email"
@@ -201,51 +293,60 @@
                 placeholder="Įveskite užsakovo el. paštą"
                 required
               />
-              <p class="input-explanation">Užsakymo ir mokėjimo patvirtinimai bus išsiųsti į šį elektroninį paštą.</p>
+              <p class="input-explanation">
+                Užsakymo ir mokėjimo patvirtinimai bus išsiųsti į šį elektroninį
+                paštą.
+              </p>
               <div class="error-message" id="order-email-error"></div>
             </div>
             <div class="additional-container">
-            <div class="additional-fields-item">
-              <label for="payer">Kas mokės už pervežimą?</label>
-              <select name="payer" id="payer">
-                <option value="siuntėjas">Siuntėjas</option>
-                <option value="gavėjas">Gavėjas</option>
-              </select>
-              <p class="input-explanation">Prašome iš anksto nurodyti, kas bus atsakingas už siuntos apmokėjimą, kad vėliau nebūtų nesusipratimų ar papildomų klausimų po užsakymo.</p>
-              <div class="error-message" id="payer-error"></div>
+              <div class="additional-fields-item">
+                <label for="payer">Kas mokės už pervežimą?</label>
+                <select name="payer" id="payer">
+                  <option value="siuntėjas">Siuntėjas</option>
+                  <option value="gavėjas">Gavėjas</option>
+                </select>
+                <p class="input-explanation">
+                  Prašome iš anksto nurodyti, kas bus atsakingas už siuntos
+                  apmokėjimą, kad vėliau nebūtų nesusipratimų ar papildomų
+                  klausimų po užsakymo.
+                </p>
+                <div class="error-message" id="payer-error"></div>
+              </div>
+              <div class="additional-fields-item">
+                <label for="payment-type">Pasirinkite apmokėjimo būdą</label>
+                <select name="payment-type" id="payment-type">
+                  <option value="grynais">Grynais</option>
+                  <option value="kortele">Kortele</option>
+                  <option value="pavedimu">
+                    Bankiniu pavedimu (juridiniams asmenims)
+                  </option>
+                </select>
+                <p class="input-explanation">
+                  Prašome pasirinkti ir nurodyti atsiskaitymo būdą, kuris jums
+                  yra patogus ir teisingas.
+                </p>
+                <div class="error-message" id="payment-type-error"></div>
+              </div>
             </div>
-            <div class="additional-fields-item">
-              <label for="payment-type">Pasirinkite apmokėjimo būdą</label>
-              <select name="payment-type" id="payment-type">
-                <option value="grynais">Grynais</option>
-                <option value="kortele">Kortele</option>
-                <option value="pavedimu">Bankiniu pavedimu (juridiniams asmenims)</option>
-              </select>
-              <p class="input-explanation">Prašome pasirinkti ir nurodyti atsiskaitymo būdą, kuris jums yra patogus ir teisingas.</p>
-              <div class="error-message" id="payment-type-error"></div>
-            </div>
-            </div>
-          
-        </div>
-            <div id="estimated-price">Numatoma užsakymo kaina: €0.00</div>
-            <div class="invoice-checkbox-container">
-              <label class="switch" for="invoice-checkbox">
-                  
-                <input
+          </div>
+          <div id="estimated-price">Numatoma užsakymo kaina: €0.00</div>
+          <div class="invoice-checkbox-container">
+            <label class="switch" for="invoice-checkbox">
+              <input
                 type="checkbox"
                 id="invoice-checkbox"
                 name="invoice-checkbox"
                 onchange="toggleInvoiceFields()"
               />
-                <span class="slider round"></span>
-              </label>
-            
-              <label for="invoice-checkbox">Reikalinga sąskaita faktūra</label>
+              <span class="slider round"></span>
+            </label>
 
+            <label for="invoice-checkbox">Reikalinga sąskaita faktūra</label>
           </div>
-            <div class="additional-fields-container">    
-              <div id="invoice-fields" style="display: none">
-                <div class="invoice-fields-item">
+          <div class="additional-fields-container">
+            <div id="invoice-fields" style="display: none">
+              <div class="invoice-fields-item">
                 <label for="company-name">Gavėjo pavadinimas</label>
                 <input
                   type="text"
@@ -256,8 +357,10 @@
                 <!-- <p class="input-explanation">Jeigu esate ne įmonė, įveskite vardą ir pavardę</p> -->
                 <div class="error-message" id="company-name-error"></div>
               </div>
-                <div class="invoice-fields-item">
-                <label for="company-code">Įmonės kodas ( juridiniams asmenims )</label>
+              <div class="invoice-fields-item">
+                <label for="company-code"
+                  >Įmonės kodas ( juridiniams asmenims )</label
+                >
                 <input
                   type="text"
                   id="company-code"
@@ -266,7 +369,7 @@
                 />
                 <div class="error-message" id="company-code-error"></div>
               </div>
-                <div class="invoice-fields-item">
+              <div class="invoice-fields-item">
                 <label for="company-email">Gavėjo el. paštas</label>
                 <input
                   type="email"
@@ -276,7 +379,7 @@
                 />
                 <div class="error-message" id="company-email-error"></div>
               </div>
-                <div class="invoice-fields-item">
+              <div class="invoice-fields-item">
                 <label for="company-address">Gavėjo adresas</label>
                 <input
                   type="text"
@@ -286,7 +389,7 @@
                 />
                 <div class="error-message" id="company-address-error"></div>
               </div>
-                <div class="invoice-fields-item">
+              <div class="invoice-fields-item">
                 <!-- <label for="company-post-code">Įmonės pašto kodas:</label> -->
                 <input
                   type="hidden"
@@ -303,234 +406,260 @@
                   value=""
                 />
               </div>
-              </div>
             </div>
+          </div>
         </div>
-        </div>  <hr>
-        <div class="step-container">
-            <p class="step-name">4. Siuntėjo informacija</p>
-            <div class="contact-fields" id="sender-fields">
-       
-                <div class="input-group">
-                    <label for="sender-name">Siuntėjo vardas</label>
-                    <input
-                        type="text"
-                        id="sender-name"
-                        name="sender-name"
-                        placeholder="Įveskite siuntėjo vardą"
-                        required
-                        pattern=".{3,}"
-                    />
-                    <div class="error-message" id="sender-name-error"></div>
-                </div>
-                
-                <div class="input-group">
-                    <label for="sender-surname">Siuntėjo pavardė</label>
-                    <input
-                        type="text"
-                        id="sender-surname"
-                        name="sender-surname"
-                        placeholder="Įveskite siuntėjo pavardę"
-                        required
-                        pattern=".{3,}"
-                    />
-                    <div class="error-message" id="sender-surname-error"></div>
-                </div>
-                
-                <div class="input-group">
-                    <label for="sender-phone">Siuntėjo telefonas</label>
-                    <input
-                        type="tel"
-                        id="sender-phone"
-                        name="sender-phone"
-                        placeholder="Įveskite siuntėjo telefoną"
-                        required
-                        pattern="\+\d+"
-                    />
-                    <div class="error-message" id="sender-phone-error"></div>
-                </div>
-                
-                <div class="input-group">
-                    <label for="sender-email">Siuntėjo el.paštas</label>
-                    <input
-                        type="email"
-                        id="sender-email"
-                        name="sender-email"
-                        placeholder="Įveskite siuntėjo el paštą"
-                        required
-                    />
-                    <div class="error-message" id="sender-email-error"></div>
-                </div>
-                
-                <div class="input-group">
-                    <label for="sender-address">Siuntėjo adresas</label>
-                    <input
-                        type="text"
-                        id="sender-address"
-                        name="sender-address"
-                        placeholder="Įveskite gatvę, namo numerį, miestą"
-                        required
-                    />
-                    <p class="input-explanation">Adresas iš kur paįmama siunta arba perduodama EcoTrip komandai.</p>
-                    <div class="error-message" id="sender-address-error"></div>
-                </div>
-                
-                <div class="input-group">
-                    <label for="sender-post-code">Siuntėjo pašto kodas</label>
-                    <input
-                        type="text"
-                        id="sender-post-code"
-                        name="sender-post-code"
-                        placeholder="Pašto kodas"
-                        required
-                        disabled
-                    />
-                    <p class="input-explanation">Pašto kodas sugeneruojamas automatiškai, suvedus tikslų adresą. Pasitikrinkite ar teisingas pašto kodas.</p>
-                    <input
-                        type="hidden"
-                        id="hidden-sender-post-code"
-                        name="hidden-sender-post-code"
-                        value=""
-                    />
-                    <div class="error-message" id="sender-post-code-error"></div>
-                </div>
-                
-              </div>
-        </div>  <hr>
-        <div class="step-container">
-            <p class="step-name">5. Gavėjo informacija</p>
-            <div class="contact-fields" id="receiver-fields">
-        
-                <div class="input-group">
-                    <label for="receiver-name">Gavėjo vardas</label>
-                    <input
-                        type="text"
-                        id="receiver-name"
-                        name="receiver-name"
-                        placeholder="Įveskite gavėjo vardą"
-                        required
-                        pattern=".{3,}"
-                    />
-                    <div class="error-message" id="receiver-name-error"></div>
-                </div>
-                            
-                <div class="input-group">
-                    <label for="receiver-surname">Gavėjo pavardė</label>
-                    <input
-                        type="text"
-                        id="receiver-surname"
-                        name="receiver-surname"
-                        placeholder="Įveskite gavėjo pavardę"
-                        required
-                        pattern=".{3,}"
-                    />
-                    <div class="error-message" id="receiver-surname-error"></div>
-                </div>
-                            
-                <div class="input-group">
-                    <label for="receiver-phone">Gavėjo telefonas</label>
-                    <input
-                        type="tel"
-                        id="receiver-phone"
-                        name="receiver-phone"
-                        placeholder="Įveskite gavėjo telefoną"
-                        required
-                        pattern="\+\d+"
-                    />
-                    <div class="error-message" id="receiver-phone-error"></div>
-                </div>
-                            
-                <div class="input-group">
-                    <label for="receiver-email">Gavėjo el.paštas</label>
-                    <input
-                        type="email"
-                        id="receiver-email"
-                        name="receiver-email"
-                        placeholder="Įveskite gavėjo el paštą"
-                        required
-                    />
-                    <div class="error-message" id="receiver-email-error"></div>
-                </div>
-                            
-                <div class="input-group">
-                    <label for="receiver-address">Gavėjo adresas</label>
-                    <input
-                        type="text"
-                        id="receiver-address"
-                        name="receiver-address"
-                        placeholder="Įveskite gatvę, namo numerį, miestą"
-                        required
-                    />
-                    <p class="input-explanation">Adresas, kuriame gavėjas galės atsiimti siuntą arba kuriame siunta bus palikta po pristatymo.</p>
-                    <div class="error-message" id="receiver-address-error"></div>
-                </div>
-                            
-                <div class="input-group">
-                    <label for="receiver-post-code">Gavėjo pašto kodas</label>
-                    <input
-                        type="text"
-                        id="receiver-post-code"
-                        name="receiver-post-code"
-                        placeholder="Pašto kodas"
-                        required
-                        disabled
-                    />
-                    <p class="input-explanation">Pašto kodas sugeneruojamas automatiškai, suvedus tikslų adresą. Pasitikrinkite ar teisingas pašto kodas.</p>
-                    <div class="error-message" id="receiver-post-code-error"></div>
-                    <input
-                        type="hidden"
-                        id="hidden-receiver-post-code"
-                        name="hidden-receiver-post-code"
-                        value=""
-                    />
-                </div>
-                            
+      </div>
+      <hr />
+      <div class="step-container">
+        <p class="step-name">4. Siuntėjo informacija</p>
+        <div class="contact-fields" id="sender-fields">
+          <div class="input-group">
+            <label for="sender-name">Siuntėjo vardas</label>
+            <input
+              type="text"
+              id="sender-name"
+              name="sender-name"
+              placeholder="Įveskite siuntėjo vardą"
+              required
+              pattern=".{3,}"
+            />
+            <div class="error-message" id="sender-name-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="sender-surname">Siuntėjo pavardė</label>
+            <input
+              type="text"
+              id="sender-surname"
+              name="sender-surname"
+              placeholder="Įveskite siuntėjo pavardę"
+              required
+              pattern=".{3,}"
+            />
+            <div class="error-message" id="sender-surname-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="sender-phone">Siuntėjo telefonas</label>
+            <input
+              type="tel"
+              id="sender-phone"
+              name="sender-phone"
+              placeholder="Įveskite siuntėjo telefoną"
+              required
+              pattern="\+\d+"
+            />
+            <div class="error-message" id="sender-phone-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="sender-email">Siuntėjo el.paštas</label>
+            <input
+              type="email"
+              id="sender-email"
+              name="sender-email"
+              placeholder="Įveskite siuntėjo el paštą"
+              required
+            />
+            <div class="error-message" id="sender-email-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="sender-address">Siuntėjo adresas</label>
+            <input
+              type="text"
+              id="sender-address"
+              name="sender-address"
+              placeholder="Įveskite gatvę, namo numerį, miestą"
+              required
+            />
+            <p class="input-explanation">
+              Adresas iš kur paįmama siunta arba perduodama EcoTrip komandai.
+            </p>
+            <div class="error-message" id="sender-address-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="sender-post-code">Siuntėjo pašto kodas</label>
+            <input
+              type="text"
+              id="sender-post-code"
+              name="sender-post-code"
+              placeholder="Pašto kodas"
+              required
+              disabled
+            />
+            <p class="input-explanation">
+              Pašto kodas sugeneruojamas automatiškai, suvedus tikslų adresą.
+              Pasitikrinkite ar teisingas pašto kodas.
+            </p>
+            <input
+              type="hidden"
+              id="hidden-sender-post-code"
+              name="hidden-sender-post-code"
+              value=""
+            />
+            <div class="error-message" id="sender-post-code-error"></div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="step-container">
+        <p class="step-name">5. Gavėjo informacija</p>
+        <div class="contact-fields" id="receiver-fields">
+          <div class="input-group">
+            <label for="receiver-name">Gavėjo vardas</label>
+            <input
+              type="text"
+              id="receiver-name"
+              name="receiver-name"
+              placeholder="Įveskite gavėjo vardą"
+              required
+              pattern=".{3,}"
+            />
+            <div class="error-message" id="receiver-name-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="receiver-surname">Gavėjo pavardė</label>
+            <input
+              type="text"
+              id="receiver-surname"
+              name="receiver-surname"
+              placeholder="Įveskite gavėjo pavardę"
+              required
+              pattern=".{3,}"
+            />
+            <div class="error-message" id="receiver-surname-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="receiver-phone">Gavėjo telefonas</label>
+            <input
+              type="tel"
+              id="receiver-phone"
+              name="receiver-phone"
+              placeholder="Įveskite gavėjo telefoną"
+              required
+              pattern="\+\d+"
+            />
+            <div class="error-message" id="receiver-phone-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="receiver-email">Gavėjo el.paštas</label>
+            <input
+              type="email"
+              id="receiver-email"
+              name="receiver-email"
+              placeholder="Įveskite gavėjo el paštą"
+              required
+            />
+            <div class="error-message" id="receiver-email-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="receiver-address">Gavėjo adresas</label>
+            <input
+              type="text"
+              id="receiver-address"
+              name="receiver-address"
+              placeholder="Įveskite gatvę, namo numerį, miestą"
+              required
+            />
+            <p class="input-explanation">
+              Adresas, kuriame gavėjas galės atsiimti siuntą arba kuriame siunta
+              bus palikta po pristatymo.
+            </p>
+            <div class="error-message" id="receiver-address-error"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="receiver-post-code">Gavėjo pašto kodas</label>
+            <input
+              type="text"
+              id="receiver-post-code"
+              name="receiver-post-code"
+              placeholder="Pašto kodas"
+              required
+              disabled
+            />
+            <p class="input-explanation">
+              Pašto kodas sugeneruojamas automatiškai, suvedus tikslų adresą.
+              Pasitikrinkite ar teisingas pašto kodas.
+            </p>
+            <div class="error-message" id="receiver-post-code-error"></div>
+            <input
+              type="hidden"
+              id="hidden-receiver-post-code"
+              name="hidden-receiver-post-code"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="step-container">
+        <p class="step-name">6. Registracijos užbaigimas</p>
+        <div class="last-container">
+          <div class="comment-container">
+            <label for="comment">Komentaras</label>
+            <textarea
+              rows="5"
+              id="comment"
+              name="comment"
+              class="comment-field"
+              placeholder="Nebūsiu namie, siuntą gali paduoti / priimti kaimynas, siuntą galima palikti kieme ir pan."
+            ></textarea>
+          </div>
+          <div class="terms-and-conditions">
+            <div class="invoice-checkbox-container">
+              <input
+                type="checkbox"
+                id="packing-rules"
+                name="packing-rules"
+                required
+              />
+              <label for="packing-rules">
+                Aš esu susipažinęs(-usi) ir sutinku su
+                <a
+                  href="https://ecotrip.lt/siuntos-pakavimo-ir-zenklinimo-taisykles/"
+                  target="_blank"
+                  >EcoTrip siuntos pakavimo ir ženklinimo taisyklėmis</a
+                >
+                <div class="error-message" id="packing-rules-error"></div>
+              </label>
             </div>
-            
-        </div>  <hr>
-        <div class="step-container">
-            <p class="step-name">6. Registracijos užbaigimas</p>
-            <div class="last-container">
-            <div class="comment-container">
-                <label for="comment">Komentaras</label>
-                <textarea rows="5" id="comment" name="comment" class="comment-field" placeholder="Nebūsiu namie, siuntą gali paduoti / priimti kaimynas, siuntą galima palikti kieme ir pan."></textarea>
-              </div>
-              <div class="terms-and-conditions">
-                <div class="invoice-checkbox-container">
-                    <input type="checkbox" id="packing-rules" name="packing-rules" required>
-                    <label for="packing-rules">
-                        Aš esu susipažinęs(-usi) ir sutinku su 
-                        <a href="https://ecotrip.lt/siuntos-pakavimo-ir-zenklinimo-taisykles/" target="_blank">EcoTrip siuntos pakavimo ir ženklinimo taisyklėmis</a>
-                        <div class="error-message" id="packing-rules-error"></div>
-                    </label>
-                 
 
-                </div>
-                
-                <div class="invoice-checkbox-container">
-                    <input type="checkbox" id="shipping-rules" name="shipping-rules" required>
-                    <label for="shipping-rules">
-                        Aš esu susipažinęs(-usi) ir sutinku su 
-                        <a href="https://ecotrip.lt/vezimo-taisykles/" target="_blank">EcoTrip vežimo taisyklėmis</a>
-                        <div class="error-message" id="shipping-rules-error"></div>
-                    </label>
-                    
-
-                </div>
-                
-                
-              </div>
-              <div class="submit-container">
+            <div class="invoice-checkbox-container">
+              <input
+                type="checkbox"
+                id="shipping-rules"
+                name="shipping-rules"
+                required
+              />
+              <label for="shipping-rules">
+                Aš esu susipažinęs(-usi) ir sutinku su
+                <a href="https://ecotrip.lt/vezimo-taisykles/" target="_blank"
+                  >EcoTrip vežimo taisyklėmis</a
+                >
+                <div class="error-message" id="shipping-rules-error"></div>
+              </label>
+            </div>
+          </div>
+          <div class="submit-container">
             <button type="submit" id="submit-form">Registruoti siuntą</button>
             <div id="loader" class="hidden">Užsakymas registruojamas...</div>
             <div class="error-message" id="submit-error"></div>
+          </div>
         </div>
-        </div>
-        </div>
-
+      </div>
     </form>
+
     <div id="message-container">
       <p id="order-confirmed"></p>
+    </div>
     </div>
     <footer>
       <div class="footer-wrapper">
@@ -539,10 +668,22 @@
             <h4>Pervežimai Lietuvoje</h4>
           </div>
           <ul>
-            <li><a href="https://ecotrip.lt/kroviniu-pervezimas">Krovinių pervežimas</a></li>
-            <li><a href="https://ecotrip.lt/siuntu-gabenimas">Siuntų gabenimas</a></li>
-            <li><a href="https://ecotrip.lt/pristatymas-is-parduotuviu">Pristatymas iš parduotuvių</a></li>
-            <li><a href="https://ecotrip.lt/vezimo-taisykles">Vežimo taisyklės</a></li>
+            <li>
+              <a href="https://ecotrip.lt/kroviniu-pervezimas"
+                >Krovinių pervežimas</a
+              >
+            </li>
+            <li>
+              <a href="https://ecotrip.lt/siuntu-gabenimas">Siuntų gabenimas</a>
+            </li>
+            <li>
+              <a href="https://ecotrip.lt/pristatymas-is-parduotuviu"
+                >Pristatymas iš parduotuvių</a
+              >
+            </li>
+            <li>
+              <a href="https://ecotrip.lt/vezimo-taisykles">Vežimo taisyklės</a>
+            </li>
           </ul>
         </div>
         <div class="footer-section">
@@ -550,11 +691,28 @@
             <h4>Pervežimai užsienyje</h4>
           </div>
           <ul>
-            <li><a href="https://ecotrip.lt/kroviniu-pervezimas">Krovinių pervežimas​</a></li>
-            <li><a href="https://ecotrip.lt/siuntu-gabenimas">Siuntų gabenimas</a></li>
-            <li><a href="https://ecotrip.lt/perkraustymo-paslaugos">Perkraustymo paslaugos</a></li>
-            <li><a href="https://ecotrip.lt/siuntos-pakavimo-ir-zenklinimo-taisykles">Siuntos pakavimo ir ženklinimo taisyklės</a></li>
-            <li><a href="https://ecotrip.lt/vezimo-taisykles">Vežimo taisyklės</a></li>
+            <li>
+              <a href="https://ecotrip.lt/kroviniu-pervezimas"
+                >Krovinių pervežimas​</a
+              >
+            </li>
+            <li>
+              <a href="https://ecotrip.lt/siuntu-gabenimas">Siuntų gabenimas</a>
+            </li>
+            <li>
+              <a href="https://ecotrip.lt/perkraustymo-paslaugos"
+                >Perkraustymo paslaugos</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://ecotrip.lt/siuntos-pakavimo-ir-zenklinimo-taisykles"
+                >Siuntos pakavimo ir ženklinimo taisyklės</a
+              >
+            </li>
+            <li>
+              <a href="https://ecotrip.lt/vezimo-taisykles">Vežimo taisyklės</a>
+            </li>
           </ul>
         </div>
         <div class="footer-section">
@@ -562,15 +720,30 @@
             <h4>Kontaktai</h4>
           </div>
           <ul>
-          <li><a href="tel:+37060122060">+370 601 22060</a></li>
-          <li><a href="tel:+37064757542">+370 647 57542</a></li>
-          <li><a href="mailto:info@ecotrip.lt">info@ecotrip.lt</a></li>
-          <li><a href="https://www.google.com/maps/place/UAB+Transona,+Minijos+g.+152+b,+93263+Klaipėda/@55.6691939,21.1587889,17z/data=!4m6!3m5!1s0x46e4dd9523602721:0x371c272f7a950b7a!8m2!3d55.6691939!4d21.1587889!16s%2Fg%2F11gxn0z4bj">Minijos g. 152b,93263 Klaipėda</a></li>
-         </ul>
+            <li><a href="tel:+37060122060">+370 601 22060</a></li>
+            <li><a href="tel:+37064757542">+370 647 57542</a></li>
+            <li><a href="mailto:info@ecotrip.lt">info@ecotrip.lt</a></li>
+            <li>
+              <a
+                href="https://www.google.com/maps/place/UAB+Transona,+Minijos+g.+152+b,+93263+Klaipėda/@55.6691939,21.1587889,17z/data=!4m6!3m5!1s0x46e4dd9523602721:0x371c272f7a950b7a!8m2!3d55.6691939!4d21.1587889!16s%2Fg%2F11gxn0z4bj"
+                >Minijos g. 152b,93263 Klaipėda</a
+              >
+            </li>
+          </ul>
           <div class="social-icons">
-            <a href="https://www.facebook.com/Ecotrip.lt/" class="facebook-f"><i class='bx bxl-facebook-circle' ></i></a>
-            <a href="https://lt.linkedin.com/company/ecotrip-transona?trk=public_post_feed-actor-name" class="linkedin"><i class='bx bxl-linkedin-square' ></i></a>
-            <a href="https://www.instagram.com/ecotriplogistika/" class="instagram"><i class='bx bxl-instagram-alt' ></i></a>
+            <a href="https://www.facebook.com/Ecotrip.lt/" class="facebook-f"
+              ><i class="bx bxl-facebook-circle"></i
+            ></a>
+            <a
+              href="https://lt.linkedin.com/company/ecotrip-transona?trk=public_post_feed-actor-name"
+              class="linkedin"
+              ><i class="bx bxl-linkedin-square"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/ecotriplogistika/"
+              class="instagram"
+              ><i class="bx bxl-instagram-alt"></i
+            ></a>
           </div>
         </div>
         <div class="footer-section">
@@ -578,14 +751,19 @@
             <h4>Naujienlaiškis</h4>
           </div>
           <ul>
-          <li>Mūsų naujienos ir specialūs <br> pasiūlymai prenumeratoriams.</li>
-          <li class="omnisend-container">  <div id="omnisend-embedded-v2-6424177cb6e32bbbd7c46874"></div></li>
-        </ul>
+            <li>
+              Mūsų naujienos ir specialūs <br />
+              pasiūlymai prenumeratoriams.
+            </li>
+            <li class="omnisend-container">
+              <div id="omnisend-embedded-v2-6424177cb6e32bbbd7c46874"></div>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
-    <p style="text-align: center;">@ 2023 ecotrip.lt | Visos teisės saugomos</p>
-  
+    <p style="text-align: center">@ 2023 ecotrip.lt | Visos teisės saugomos</p>
+
     <script src="./src/scripts/header.js"></script>
 
     <script src="./src/scripts/script.js"></script>
@@ -596,12 +774,20 @@
     <script src="./src/scripts/additional.js"></script>
     <script src="./src/scripts/price.js"></script>
     <script src="./src/scripts/popup.js"></script>
+    <script src="./src/scripts/localstorage.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDovSnz31yp2vxsf3kgTeNqKBd-yFGWMvg&libraries=places&callback=initAutocomplete"></script>
     <script type="text/javascript">
       window.omnisend = window.omnisend || [];
       omnisend.push(["accountID", "63d917859409de13a77b02e7"]);
       omnisend.push(["track", "$pageViewed"]);
-      !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
-  </script>
-</body>
+      !(function () {
+        var e = document.createElement("script");
+        (e.type = "text/javascript"),
+          (e.async = !0),
+          (e.src = "https://omnisnippet1.com/inshop/launcher-v2.js");
+        var t = document.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(e, t);
+      })();
+    </script>
+  </body>
 </html>

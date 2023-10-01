@@ -91,9 +91,10 @@ function adjustPriceAndCurrency(basePrice, route, payer) {
       adjustedPrice = basePrice * 1.15;
     }
   }
+  adjustedPrice = parseFloat(adjustedPrice.toFixed(2));
+  
   return { adjustedPrice, currency };
 }
-
 function getDiscount(numberOfParcels) {
   if (numberOfParcels >= 5) {
     return 0.2;
