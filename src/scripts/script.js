@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
               // Display a message in Lithuanian
               orderConfirmed.innerHTML = `
-              <h2>Užsakymas Sėkmingai Užregistruotas</h2>
+              <h2>Užsakymas sėkmingai Užregistruotas</h2>
               <p>Jūsų užsakymo ID yra <strong>${orderId}</strong>.</p>
               <p>Nurodytu el. paštu netrukus gausite užsakymo patvirtinimą ir papildomą informaciją.</p>
               <p>Jeigu negausite laiško, prašome susisiekti su 'EcoTrip' telefonu <a href="tel:+37060122060">+37060122060</a> arba <a href="tel:+447479622299">+447479622299</a>.</p>
