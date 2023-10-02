@@ -1,0 +1,11 @@
+{
+    "name": "EcoTrip Užsakymas",
+    "short_name": "EcoTrip",
+    "start_url": "https://uzsakymas.ecotrip.lt",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#34a853",
+    "description": "Delivery Company EcoTrip"
+    
+  }
+  
