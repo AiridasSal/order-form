@@ -68,9 +68,9 @@ routeDropdown.addEventListener('change', function() {
   for (let i = 1; i <= daysInMonth; i++) {
     const day = new Date(year, month, i);
 
-    // if (month == currentMonth && i < currentDay) {
-    //   continue;
-    // }
+    if (month == currentMonth && i < currentDay) {
+      continue;
+    }
 
     if (routeDropdown.value == 'LT-UK' && day.getDay() == 2) {
       if (i + 1 <= daysInMonth) { // Check if the next day is within the month
