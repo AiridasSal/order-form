@@ -1,4 +1,8 @@
 const today = new Date();
+const option = document.createElement('option');
+option.value = '31-01.';
+option.text = '31-';
+
 const monthNames = [
   'sausio',
   'vasario',
@@ -22,6 +26,11 @@ const dateLabels = document.querySelectorAll('.date-label');
 
 const currentYear = today.getFullYear();
 const yearOption = document.createElement('option');
+
+function isLastTuesdayOfOctober(year, month, date) {
+  return month === 9 && date === 31;
+}
+
 yearOption.value = currentYear;
 yearOption.text = currentYear;
 yearDropdown.appendChild(yearOption);
@@ -67,31 +76,48 @@ routeDropdown.addEventListener('change', function() {
 
   for (let i = 1; i <= daysInMonth; i++) {
     const day = new Date(year, month, i);
+    let nextDay = i + 1;
+    let nextDayMonth = month;
 
-    if (month == currentMonth && i < currentDay) {
-      continue;
+    // Check if next day is in the next month
+    if (nextDay > daysInMonth) {
+      nextDay = 1;
+      nextDayMonth = (month + 1) % 12;
     }
 
     if (routeDropdown.value == 'LT-UK' && day.getDay() == 2) {
-      if (i + 1 <= daysInMonth) { // Check if the next day is within the month
-        const dayOption = document.createElement('option');
-        dayOption.value = `${i}-${i + 1}`;
-        dayOption.text = `${i}-${i + 1}`;
-        dayDropdown.appendChild(dayOption);
+      let nextDay = i + 1;
+      let displayText = `${i}-${i+1}`;
+    
+      if (isLastTuesdayOfOctober(year, month, i)) {
+        nextDay = 1;
+        displayText = "31";
+      } else if (nextDay > daysInMonth) {
+        nextDay = 1; 
       }
+    
+      if (month == currentMonth && i < currentDay) {
+        continue;
+      }
+    
+      const dayOption = document.createElement('option');
+      dayOption.value = `${i}-${nextDay}`;
+      dayOption.text = displayText;
+      dayDropdown.appendChild(dayOption);
     }
+    
 
-    if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && i + 1 <= daysInMonth && new Date(year, month, i + 1).getDay() == 6) {
-      // Check if the Saturday is in the past
-      if (!(month == currentMonth && i + 1 < currentDay)) {
+    if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && new Date(year, nextDayMonth, nextDay).getDay() == 6) {
+      if (!(month == currentMonth && nextDay + 1 <= currentDay)) {
         const dayOption = document.createElement('option');
-        dayOption.value = `${i}-${i + 1}`;
-        dayOption.text = `${i}-${i + 1}`;
+        dayOption.value = (nextDayMonth == month) ? `${i}-${nextDay}` : `${i}-${monthNames[nextDayMonth]} ${nextDay}`;
+        dayOption.text = dayOption.value;
         dayDropdown.appendChild(dayOption);
       }
     }
   }
 });
+
 dayDropdown.addEventListener('change', function() {
   if (dayDropdown.value) {
     const [startDay, endDay] = dayDropdown.value.split('-').map(Number);
@@ -119,12 +145,15 @@ dayDropdown.addEventListener('change', function() {
     
     let deliveryDateString;
     if (deliveryStartMonthIndex === deliveryEndMonthIndex) {
-      deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
+        deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
+    } else if (dayDropdown.value === '31-1') {
+        deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
     } else {
-      deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${monthNames[deliveryEndMonthIndex]} ${newEndDay}d.`;
+        deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${monthNames[deliveryEndMonthIndex]} ${newEndDay}d.`;
     }
     
     deliveryDate.textContent = `Numatoma užsakymo pristatymo data: ${deliveryDateString}`;
+    
   } else {
     deliveryDate.textContent = '';
   }
