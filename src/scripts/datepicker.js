@@ -59,9 +59,10 @@ routeDropdown.addEventListener('change', function() {
   if (month == 11) {
     console.log("November selected, Route: " + route);
     if (route == 'LT-UK') {
-      addDayOption('24-25', '24-25');
+      addDayOption('28-29', '28-29')
+      
     } else if (route == 'UK-LT') {
-      addDayOption('28-29', '28-29');
+      ;addDayOption('24-25', '24-25');
     }
     return; // Prevent further options from being added
   }
