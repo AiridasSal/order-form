@@ -1,7 +1,6 @@
 const today = new Date();
 const option = document.createElement('option');
-option.value = '31-01.';
-option.text = '31-';
+
 
 const monthNames = [
   'sausio',
@@ -27,9 +26,7 @@ const dateLabels = document.querySelectorAll('.date-label');
 const currentYear = today.getFullYear();
 const yearOption = document.createElement('option');
 
-function isLastTuesdayOfOctober(year, month, date) {
-  return month === 9 && date === 31;
-}
+
 
 yearOption.value = currentYear;
 yearOption.text = currentYear;
@@ -47,10 +44,39 @@ monthDropdown.addEventListener('change', function() {
   routeDropdown.dispatchEvent(new Event('change'));
 });
 
+function isDateInPast(year, month, day) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); 
+  const checkDate = new Date(year, month, day);
+  return checkDate < today;
+}
+
 routeDropdown.addEventListener('change', function() {
+  const month = parseInt(monthDropdown.value);
+  const route = routeDropdown.value;
   // Clear day dropdown
   dayDropdown.innerHTML = '';
-
+  if (month == 11) {
+    console.log("November selected, Route: " + route);
+    if (route == 'LT-UK') {
+      addDayOption('24-25', '24-25');
+    } else if (route == 'UK-LT') {
+      addDayOption('28-29', '28-29');
+    }
+    return; // Prevent further options from being added
+  }
+  if (month == 12) {
+    if (route == 'LT-UK') {
+      addDayOption('5-6', '5-6');
+      addDayOption('13-15', '13-15');
+      return; // Prevent further options from being added
+    } else if (route == 'UK-LT') {
+      addDayOption('1-3', '1-3');
+      addDayOption('8-10', '8-10');
+      addDayOption('17-19', '17-19');
+      return; // Prevent further options from being added
+    }
+  }
   const emptyOption = document.createElement('option');
   emptyOption.value = '';
   emptyOption.text = '';
@@ -70,7 +96,7 @@ routeDropdown.addEventListener('change', function() {
   dateLabels.forEach(label => label.style.display = '');
 
   const year = yearDropdown.value;
-  const month = monthDropdown.value - 1;
+  // const month = monthDropdown.value - 1;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const currentDay = today.getDate();
 
@@ -84,27 +110,6 @@ routeDropdown.addEventListener('change', function() {
       nextDay = 1;
       nextDayMonth = (month + 1) % 12;
     }
-
-    if (routeDropdown.value == 'LT-UK' && day.getDay() == 2) {
-      let nextDay = i + 1;
-      let displayText = `${i}-${i+1}`;
-    
-      if (isLastTuesdayOfOctober(year, month, i)) {
-        nextDay = 1;
-        displayText = "31";
-      } else if (nextDay > daysInMonth) {
-        nextDay = 1; 
-      }
-    
-      if (month == currentMonth && i < currentDay) {
-        continue;
-      }
-    
-      const dayOption = document.createElement('option');
-      dayOption.value = `${i}-${nextDay}`;
-      dayOption.text = displayText;
-      dayDropdown.appendChild(dayOption);
-    }
     
 
     if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && new Date(year, nextDayMonth, nextDay).getDay() == 6) {
@@ -117,7 +122,13 @@ routeDropdown.addEventListener('change', function() {
     }
   }
 });
-
+function addDayOption(value, text) {
+  console.log(`Adding Day Option: ${value}, ${text}`); // Debugging
+  const option = document.createElement('option');
+  option.value = value;
+  option.text = text;
+  dayDropdown.appendChild(option);
+}
 dayDropdown.addEventListener('change', function() {
   if (dayDropdown.value) {
     const [startDay, endDay] = dayDropdown.value.split('-').map(Number);
@@ -158,8 +169,6 @@ dayDropdown.addEventListener('change', function() {
     deliveryDate.textContent = '';
   }
 });
-
-
 
 routeDropdown.dispatchEvent(new Event('change'));
 
