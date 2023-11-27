@@ -62,6 +62,7 @@ routeDropdown.addEventListener('change', function() {
       addDayOption('28-29', '28-29')
       
     } else if (route == 'UK-LT') 
+      addDayOption('-', '-')
     }
     return; // Prevent further options from being added
   }
