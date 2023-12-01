@@ -54,14 +54,8 @@ function isDateInPast(year, month, day) {
 routeDropdown.addEventListener('change', function() {
   const month = parseInt(monthDropdown.value);
   const route = routeDropdown.value;
-  // Clear day dropdown
-  dayDropdown.innerHTML = '';
-  if (month == 11) {
-    console.log("November selected, Route: " + route);
-    if (route == 'LT-UK') {
-      addDayOption('28-29', '28-29')
-    }
-    return; // Prevent further options from being added
+  while (dayDropdown.firstChild) {
+    dayDropdown.removeChild(dayDropdown.firstChild);
   }
   if (month == 12) {
     if (route == 'LT-UK') {
@@ -81,9 +75,9 @@ routeDropdown.addEventListener('change', function() {
   dayDropdown.appendChild(emptyOption);
 
   if (routeDropdown.value == 'route-not-selected') {
-    yearDropdown.style.display = 'none';
-    monthDropdown.style.display = 'none';
-    dayDropdown.style.display = 'none';
+    // yearDropdown.style.display = 'none';
+    // monthDropdown.style.display = 'none';
+    // dayDropdown.style.display = 'none';
     dateLabels.forEach(label => label.style.display = 'none');
     return;
   }
@@ -125,6 +119,7 @@ function addDayOption(value, text) {
   const option = document.createElement('option');
   option.value = value;
   option.text = text;
+  dayDropdown.value = '';
   dayDropdown.appendChild(option);
 }
 dayDropdown.addEventListener('change', function() {
