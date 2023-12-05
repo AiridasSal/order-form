@@ -115,6 +115,8 @@ routeDropdown.addEventListener('change', function() {
 });
 function addDayOption(value, text) {
   console.log(`Adding Day Option: ${value}, ${text}`); // Debugging
+  console.log(yearDropdown.value, monthDropdown.value );
+  console.log(today);
   const option = document.createElement('option');
   option.value = value;
   option.text = text;

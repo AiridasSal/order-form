@@ -221,14 +221,13 @@
       <div class="spinner"></div>
     </div>
 
-    <div id="previous-data-modal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <p>Would you like to use the previous order data?</p>
-        <button onclick="usePreviousData()">Yes</button>
-        <button onclick="closeModal()">No</button>
-      </div>
-    </div>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
+
   
      
     <form id="parcel-form" novalidate>
@@ -790,6 +789,7 @@
     <script src="./src/scripts/price.js"></script>
     <script src="./src/scripts/popup.js"></script>
     <script src="./src/scripts/localstorage.js"></script>
+    <script src="./src/scripts/modal.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDovSnz31yp2vxsf3kgTeNqKBd-yFGWMvg&libraries=places&callback=initAutocomplete" async></script>
     <script type="text/javascript">
       window.omnisend = window.omnisend || [];
