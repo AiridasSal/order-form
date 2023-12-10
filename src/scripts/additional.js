@@ -3,25 +3,25 @@ document.getElementById('payment-type').addEventListener('change', function() {
   const checkbox = document.getElementById('invoice-checkbox');
 
   if (paymentType === 'pavedimu') {
-      checkbox.checked = true; // Check the checkbox
+      checkbox.checked = true; 
   } else {
-      checkbox.checked = false; // Uncheck the checkbox
+      checkbox.checked = false; 
   }
 
-  toggleInvoiceFields(); // Update the display of the invoice fields based on the checkbox state
+  toggleInvoiceFields();
 });
 
 function toggleInvoiceFields() {
   const invoiceFields = document.getElementById('invoice-fields');
   const checkbox = document.getElementById('invoice-checkbox');
-  const inputs = invoiceFields.querySelectorAll('input'); // Get all input fields within the invoiceFields container
+  const inputs = invoiceFields.querySelectorAll('input'); 
 
   if (checkbox.checked) {
       invoiceFields.style.display = 'flex';
-      inputs.forEach(input => input.setAttribute('required', true)); // Set each input field as required
+      inputs.forEach(input => input.setAttribute('required', true)); 
   } else {
       invoiceFields.style.display = 'none';
-      inputs.forEach(input => input.removeAttribute('required')); // Remove the required attribute from each input field
+      inputs.forEach(input => input.removeAttribute('required')); 
   }
 }
 document.getElementById('parcel-form').addEventListener('submit', function(event) {
@@ -29,9 +29,9 @@ document.getElementById('parcel-form').addEventListener('submit', function(event
   const checkbox = document.getElementById('invoice-checkbox');
   const submitError = document.getElementById('submit-error')
   if (paymentType === 'pavedimu' && !checkbox.checked) {
-      event.preventDefault(); // Prevent the form from submitting
-      checkbox.checked = true; // Check the checkbox
-      toggleInvoiceFields(); // Display the invoice fields
+      event.preventDefault(); 
+      checkbox.checked = true; 
+      toggleInvoiceFields(); 
       submitError.textContent = 'Prašome užpildyti įmonės duomenis'  }
       else {
         submitError.textContent = ""

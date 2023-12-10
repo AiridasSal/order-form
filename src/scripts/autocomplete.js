@@ -1,6 +1,5 @@
-// Google Maps Address Autocomplete
 function initAutocomplete() {
-    const options = {};  // No types parameter set
+    const options = {};  
   
     const senderAddressAutocomplete = new google.maps.places.Autocomplete(document.getElementById('sender-address'), options);
     senderAddressAutocomplete.addListener('place_changed', function() {
@@ -17,7 +16,6 @@ function initAutocomplete() {
       fillInAddress(companyAddressAutocomplete, 'company');
     });
     
-    // Event listener for focusout to auto-generate postal code
     ['sender', 'receiver', 'company'].forEach((type) => {
       document.getElementById(`${type}-address`).addEventListener('focusout', function() {
         getPostalCodeByAddress(this.value, `${type}-post-code`);

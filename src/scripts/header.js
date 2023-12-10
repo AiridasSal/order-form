@@ -38,7 +38,6 @@ dropdownBtn.forEach((btn) => {
   });
 });
 
-// close dropdown menu when the dropdown links are clicked
 links.forEach((link) =>
   link.addEventListener("click", () => {
     closeDropdownMenu();
@@ -47,13 +46,11 @@ links.forEach((link) =>
   })
 );
 
-// close dropdown menu when you click on the document body
 document.documentElement.addEventListener("click", () => {
   closeDropdownMenu();
   setAriaExpandedFalse();
 });
 
-// close dropdown when the escape key is pressed
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     closeDropdownMenu();
@@ -61,7 +58,6 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// toggle hamburger menu
 hamburgerBtn.addEventListener("click", toggleHamburger);
 
 

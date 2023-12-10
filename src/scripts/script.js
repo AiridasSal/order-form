@@ -1,18 +1,15 @@
 
-// Add these functions to your script
-// function checkPreviousData() {
-//   const savedData = JSON.parse(localStorage.getItem('EcoTrip-Order'));
-//   if (savedData) {
-//       // Show modal if there's saved data
-//       document.getElementById('previous-data-modal').style.display = 'block';
-//   }
-// }
+function checkPreviousData() {
+  const savedData = JSON.parse(localStorage.getItem('EcoTrip-Order'));
+  if (savedData) {
+      document.getElementById('previous-data-modal').style.display = 'block';
+  }
+}
 
-// function usePreviousData() {
-//   // This function should load the previous data into the form
-//   document.getElementById('load-saved-data').click();  // Assuming you have this button in your HTML
-//   closeModal();
-// }
+function usePreviousData() {
+  document.getElementById('load-saved-data').click();  
+  closeModal();
+}
 
 function closeModal() {
   document.getElementById('previous-data-modal').style.display = 'none';
@@ -32,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     submitButton.disabled = true;
     loader.classList.remove('hidden');
     if (validateForm()) {
-        // Extract form data and structure it
         const formData = new FormData(form);
         const data = {};
         formData.forEach((value, key) => {
@@ -77,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             companyEmail: data['company-email']
           } : null
         };
-        // localStorage.setItem('EcoTrip-Order', JSON.stringify(structuredData));
+        localStorage.setItem('EcoTrip-Order', JSON.stringify(structuredData));
 
         form.style.display = 'none';
         loader.classList.remove('hidden');
@@ -96,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const responseData = await response.json();
             const orderId = responseData.orderId;
             if (response.ok) {
-              // Display a message in Lithuanian
               orderConfirmed.innerHTML = `
               <h2>Užsakymas sėkmingai Užregistruotas</h2>
               <p>Jūsų užsakymo ID yra <strong>${orderId}</strong>.</p>
@@ -104,14 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
               <p>Jeigu negausite laiško, prašome susisiekti su 'EcoTrip' telefonu <a href="tel:+37060122060">+37060122060</a> arba <a href="tel:+447479622299">+447479622299</a>.</p>
              `;
                         form.reset();
-    //   // Attach event listener to 'save-info' checkbox
-    //   document.getElementById('save-info').addEventListener('change', function() {
-    //     if (this.checked) {
-    //         localStorage.setItem('EcoTrip-Order', JSON.stringify(structuredData));
-    //     } else {
-    //         localStorage.removeItem('EcoTrip-Order');
-    //     }
-    // });
+      document.getElementById('save-info').addEventListener('change', function() {
+        if (this.checked) {
+            localStorage.setItem('EcoTrip-Order', JSON.stringify(structuredData));
+        } else {
+            localStorage.removeItem('EcoTrip-Order');
+        }
+    });
 
 } else {
     form.style.display = 'block';
