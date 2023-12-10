@@ -97,7 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
               <p>Jūsų užsakymo ID yra <strong>${orderId}</strong>.</p>
               <p>Nurodytu el. paštu netrukus gausite užsakymo patvirtinimą ir papildomą informaciją.</p>
               <p>Jeigu negausite laiško, prašome susisiekti su 'EcoTrip' telefonu <a href="tel:+37060122060">+37060122060</a> arba <a href="tel:+447479622299">+447479622299</a>.</p>
-             `;
+              <input[type="checkbox"] id="save-info">
+              `;
                         form.reset();
       document.getElementById('save-info').addEventListener('change', function() {
         if (this.checked) {
