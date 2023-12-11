@@ -82,10 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (selectedYear === 2023 && selectedMonth === 11) {
             if (route === 'LT-UK') {
-                addDayOption('9-10', '9-10');
                 addDayOption('13-15', '13-15');
             } else if (route === 'UK-LT') {
-                addDayOption('8-10', '8-10');
                 addDayOption('17-19', '17-19');
             }
             return;
