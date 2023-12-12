@@ -65,12 +65,20 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let day = 1; day <= daysInMonth; day += 7) {
                 let startDay = day;
                 let endDay = startDay + 1;
-
-                if (route === 'UK-LT') {
-                    startDay += 3;
-                    endDay += 3;
+                if (route === 'route-not-selected'){
+                    dayDropdown.style.display='none'
                 }
+                if (route === 'UK-LT') {
+                    startDay += 4;
+                    endDay += 4;
+                    dayDropdown.style.display='flex'
+                }
+                if (route === 'LT-UK'){
+                    startDay +=1;
+                    endDay +=1;
+                    dayDropdown.style.display='flex'
 
+                }
                 if (endDay <= daysInMonth) {
                     addDayOption(`${startDay}-${endDay}`, `${startDay}-${endDay}`);
                 }
