@@ -14,50 +14,21 @@ document.addEventListener('DOMContentLoaded', function() {
     yearDropdown.addEventListener('change', function() {
         monthDropdown.innerHTML = '';
         if (parseInt(yearDropdown.value) === 2023) {
-            addMonthOption(11, 2023);
+            addMonthOption(12, 2023); 
         } else {
-            addMonthOption(0, 2024);
-            addMonthOption(1, 2024);
+            addMonthOption(1, 2024); 
+            addMonthOption(2, 2024); 
         }
         updateDayOptions();
     });
 
     if (currentYear === 2023) {
-        addMonthOption(11, 2023);
+        addMonthOption(12, 2023); 
     }
 
     routeDropdown.addEventListener('change', updateDayOptions);
     monthDropdown.addEventListener('change', updateDayOptions);
 
-    function isTodaySecondDayOfSelection() {
-        const selectedOption = dayDropdown.value;
-        if (!selectedOption) return false; 
-
-        const [startDay, endDay] = selectedOption.split('-').map(Number);
-        const selectedMonthIndex = parseInt(monthDropdown.value);
-        const selectedYear = parseInt(yearDropdown.value);
-        
-        const secondDayDate = new Date(selectedYear, selectedMonthIndex, endDay);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); 
-
-        return secondDayDate.getTime() === today.getTime();
-    }
-    function showModal() {
-        const modal = document.getElementById("myModal");
-        modal.style.display = "block";
-
-        const span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-    }
     function addYearOption(year) {
         const option = document.createElement('option');
         option.value = year;
@@ -68,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function addMonthOption(monthIndex, year) {
         const option = document.createElement('option');
         option.value = monthIndex;
-        option.text = monthNames[monthIndex];
+        option.text = monthNames[monthIndex - 1]; 
         monthDropdown.appendChild(option);
     }
 
@@ -80,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedMonth = parseInt(monthDropdown.value);
         const route = routeDropdown.value;
 
-        if (selectedYear === 2023 && selectedMonth === 11) {
+        if (selectedYear === 2023 && selectedMonth === 12) { 
             if (route === 'LT-UK') {
                 addDayOption('13-15', '13-15');
             } else if (route === 'UK-LT') {
@@ -90,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (selectedYear === 2024) {
-            const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
+            const daysInMonth = new Date(selectedYear, selectedMonth, 0).getDate(); 
             for (let day = 1; day <= daysInMonth; day += 7) {
                 let startDay = day;
                 let endDay = startDay + 1;
@@ -121,13 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
         dayDropdown.appendChild(emptyOption);
     }
 
-    
     yearDropdown.dispatchEvent(new Event('change'));
+
     dayDropdown.addEventListener('change', function() {
         if (dayDropdown.value) {
           const [startDay, endDay] = dayDropdown.value.split('-').map(Number);
           
-          const selectedMonthIndex = monthDropdown.value;
+          const selectedMonthIndex = parseInt(monthDropdown.value) - 1;
           const selectedYear = parseInt(yearDropdown.value);
           
           const daysInMonth = new Date(selectedYear, selectedMonthIndex + 1, 0).getDate();
@@ -148,13 +119,10 @@ document.addEventListener('DOMContentLoaded', function() {
             deliveryStartMonthIndex = (deliveryStartMonthIndex + 1) % 12;
           }
           
-          if (isTodaySecondDayOfSelection()) {
-            showModal();
-        }
-
           let deliveryDateString;
-
           if (deliveryStartMonthIndex === deliveryEndMonthIndex) {
+              deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
+          } else if (dayDropdown.value === '31-1') {
               deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
           } else {
               deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${monthNames[deliveryEndMonthIndex]} ${newEndDay}d.`;
