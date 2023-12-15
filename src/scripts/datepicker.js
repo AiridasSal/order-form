@@ -52,9 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const route = routeDropdown.value;
 
         if (selectedYear === 2023 && selectedMonth === 12) { 
-            if (route === 'LT-UK') {
-                addDayOption('13-15', '13-15');
-            } else if (route === 'UK-LT') {
+         if (route === 'UK-LT') {
                 addDayOption('17-19', '17-19');
             }
             return;
