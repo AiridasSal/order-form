@@ -1,146 +1,164 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const monthNames = ['sausio', 'vasario', 'kovo', 'balandžio', 'gegužės', 'birželio', 'liepos', 'rugpjūčio', 'rugsėjo', 'spalio', 'lapkričio', 'gruodžio'];
-    const deliveryDate = document.getElementById('delivery-date')
-    const routeDropdown = document.getElementById('route');
-    const yearDropdown = document.getElementById('year');
-    const monthDropdown = document.getElementById('month');
-    const dayDropdown = document.getElementById('day');
+const today = new Date();
+const option = document.createElement('option');
+option.value = '31-01.';
+option.text = '31-';
 
-    addYearOption(currentYear);
-    addYearOption(2024);
+const monthNames = [
+  'sausio',
+  'vasario',
+  'kovo',
+  'balandžio',
+  'gegužės',
+  'birželio',
+  'liepos',
+  'rugpjūčio',
+  'rugsėjo',
+  'spalio',
+  'lapkričio',
+  'gruodžio'
+];
+const routeDropdown = document.getElementById('route');
+const yearDropdown = document.getElementById('year');
+const monthDropdown = document.getElementById('month');
+const dayDropdown = document.getElementById('day');
+const deliveryDate = document.getElementById('delivery-date')
+const dateLabels = document.querySelectorAll('.date-label');
 
-    yearDropdown.addEventListener('change', function() {
-        monthDropdown.innerHTML = '';
-        if (parseInt(yearDropdown.value) === 2023) {
-            addMonthOption(12, 2023); 
-        } else {
-            addMonthOption(1, 2024); 
-            addMonthOption(2, 2024); 
-        }
-        updateDayOptions();
-    });
+const currentYear = today.getFullYear();
+const yearOption = document.createElement('option');
 
-    if (currentYear === 2023) {
-        addMonthOption(12, 2023); 
-    }
+function isLastTuesdayOfOctober(year, month, date) {
+  return month === 9 && date === 31;
+}
 
-    routeDropdown.addEventListener('change', updateDayOptions);
-    monthDropdown.addEventListener('change', updateDayOptions);
+yearOption.value = currentYear;
+yearOption.text = currentYear;
+yearDropdown.appendChild(yearOption);
 
-    function addYearOption(year) {
-        const option = document.createElement('option');
-        option.value = year;
-        option.text = year;
-        yearDropdown.appendChild(option);
-    }
+const currentMonth = today.getMonth();
+for (let i = currentMonth; i < 12; i++) {
+  const monthOption = document.createElement('option');
+  monthOption.value = i + 1;
+  monthOption.text = new Date(currentYear, i, 1).toLocaleString('lt-LT', { month: 'long' });
+  monthDropdown.appendChild(monthOption);
+}
 
-    function addMonthOption(monthIndex, year) {
-        const option = document.createElement('option');
-        option.value = monthIndex;
-        option.text = monthNames[monthIndex - 1]; 
-        monthDropdown.appendChild(option);
-    }
-
-    function updateDayOptions() {
-        dayDropdown.innerHTML = '';
-        addEmptyDayOption(); 
-
-        const selectedYear = parseInt(yearDropdown.value);
-        const selectedMonth = parseInt(monthDropdown.value);
-        const route = routeDropdown.value;
-
-        if (selectedYear === 2023 && selectedMonth === 12) { 
-         if (route === 'UK-LT') {
-                addDayOption('17-19', '17-19');
-            }
-            return;
-        }
-
-        if (selectedYear === 2024) {
-            const daysInMonth = new Date(selectedYear, selectedMonth, 0).getDate(); 
-            for (let day = 1; day <= daysInMonth; day += 7) {
-                let startDay = day;
-                let endDay = startDay + 1;
-                if (route === 'route-not-selected'){
-                    dayDropdown.style.display='none'
-                }
-                if (route === 'UK-LT') {
-                    startDay += 4;
-                    endDay += 4;
-                    dayDropdown.style.display='flex'
-                }
-                if (route === 'LT-UK'){
-                    startDay +=1;
-                    endDay +=1;
-                    dayDropdown.style.display='flex'
-
-                }
-                if (endDay <= daysInMonth) {
-                    addDayOption(`${startDay}-${endDay}`, `${startDay}-${endDay}`);
-                }
-            }
-        }
-    }
-
-    function addDayOption(value, text) {
-        const option = document.createElement('option');
-        option.value = value;
-        option.text = text;
-        dayDropdown.appendChild(option);
-    }
-
-    function addEmptyDayOption() {
-        const emptyOption = document.createElement('option');
-        emptyOption.value = '';
-        emptyOption.text = 'pasirinkite';
-        dayDropdown.appendChild(emptyOption);
-    }
-
-    yearDropdown.dispatchEvent(new Event('change'));
-
-    dayDropdown.addEventListener('change', function() {
-        if (dayDropdown.value) {
-          const [startDay, endDay] = dayDropdown.value.split('-').map(Number);
-          
-          const selectedMonthIndex = parseInt(monthDropdown.value) - 1;
-          const selectedYear = parseInt(yearDropdown.value);
-          
-          const daysInMonth = new Date(selectedYear, selectedMonthIndex + 1, 0).getDate();
-          
-          let newStartDay = startDay + 3;
-          let newEndDay = endDay + 3;
-          
-          let deliveryStartMonthIndex = selectedMonthIndex;
-          let deliveryEndMonthIndex = selectedMonthIndex;
-          
-          if (newEndDay > daysInMonth) {
-            newEndDay = newEndDay - daysInMonth;
-            deliveryEndMonthIndex = (deliveryEndMonthIndex + 1) % 12;
-          }
-          
-          if (newStartDay > daysInMonth) {
-            newStartDay = newStartDay - daysInMonth;
-            deliveryStartMonthIndex = (deliveryStartMonthIndex + 1) % 12;
-          }
-          
-          let deliveryDateString;
-          if (deliveryStartMonthIndex === deliveryEndMonthIndex) {
-              deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
-          } else if (dayDropdown.value === '31-1') {
-              deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
-          } else {
-              deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${monthNames[deliveryEndMonthIndex]} ${newEndDay}d.`;
-          }
-          
-          deliveryDate.textContent = `Numatoma užsakymo pristatymo data: ${deliveryDateString}`;
-          
-        } else {
-          deliveryDate.textContent = '';
-        }
-      });
-      
-      routeDropdown.dispatchEvent(new Event('change'));
-      
+monthDropdown.addEventListener('change', function() {
+  routeDropdown.dispatchEvent(new Event('change'));
 });
+
+routeDropdown.addEventListener('change', function() {
+  // Clear day dropdown
+  dayDropdown.innerHTML = '';
+
+  const emptyOption = document.createElement('option');
+  emptyOption.value = '';
+  emptyOption.text = '';
+  dayDropdown.appendChild(emptyOption);
+
+  if (routeDropdown.value == 'route-not-selected') {
+    yearDropdown.style.display = 'none';
+    monthDropdown.style.display = 'none';
+    dayDropdown.style.display = 'none';
+    dateLabels.forEach(label => label.style.display = 'none');
+    return;
+  }
+
+  yearDropdown.style.display = '';
+  monthDropdown.style.display = '';
+  dayDropdown.style.display = '';
+  dateLabels.forEach(label => label.style.display = '');
+
+  const year = yearDropdown.value;
+  const month = monthDropdown.value - 1;
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const currentDay = today.getDate();
+
+  for (let i = 1; i <= daysInMonth; i++) {
+    const day = new Date(year, month, i);
+    let nextDay = i + 1;
+    let nextDayMonth = month;
+
+    // Check if next day is in the next month
+    if (nextDay > daysInMonth) {
+      nextDay = 1;
+      nextDayMonth = (month + 1) % 12;
+    }
+
+    if (routeDropdown.value == 'LT-UK' && day.getDay() == 2) {
+      let nextDay = i + 1;
+      let displayText = `${i}-${i+1}`;
+    
+      if (isLastTuesdayOfOctober(year, month, i)) {
+        nextDay = 1;
+        displayText = "31";
+      } else if (nextDay > daysInMonth) {
+        nextDay = 1; 
+      }
+    
+      if (month == currentMonth && i < currentDay) {
+        continue;
+      }
+    
+      const dayOption = document.createElement('option');
+      dayOption.value = `${i}-${nextDay}`;
+      dayOption.text = displayText;
+      dayDropdown.appendChild(dayOption);
+    }
+    
+
+    if (routeDropdown.value == 'UK-LT' && day.getDay() == 5 && new Date(year, nextDayMonth, nextDay).getDay() == 6) {
+      if (!(month == currentMonth && nextDay + 1 <= currentDay)) {
+        const dayOption = document.createElement('option');
+        dayOption.value = (nextDayMonth == month) ? `${i}-${nextDay}` : `${i}-${monthNames[nextDayMonth]} ${nextDay}`;
+        dayOption.text = dayOption.value;
+        dayDropdown.appendChild(dayOption);
+      }
+    }
+  }
+});
+
+dayDropdown.addEventListener('change', function() {
+  if (dayDropdown.value) {
+    const [startDay, endDay] = dayDropdown.value.split('-').map(Number);
+    
+    const selectedMonthIndex = monthDropdown.value - 1;
+    const selectedYear = parseInt(yearDropdown.value);
+    
+    const daysInMonth = new Date(selectedYear, selectedMonthIndex + 1, 0).getDate();
+    
+    let newStartDay = startDay + 3;
+    let newEndDay = endDay + 3;
+    
+    let deliveryStartMonthIndex = selectedMonthIndex;
+    let deliveryEndMonthIndex = selectedMonthIndex;
+    
+    if (newEndDay > daysInMonth) {
+      newEndDay = newEndDay - daysInMonth;
+      deliveryEndMonthIndex = (deliveryEndMonthIndex + 1) % 12;
+    }
+    
+    if (newStartDay > daysInMonth) {
+      newStartDay = newStartDay - daysInMonth;
+      deliveryStartMonthIndex = (deliveryStartMonthIndex + 1) % 12;
+    }
+    
+    let deliveryDateString;
+    if (deliveryStartMonthIndex === deliveryEndMonthIndex) {
+        deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
+    } else if (dayDropdown.value === '31-1') {
+        deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${newEndDay}d.`;
+    } else {
+        deliveryDateString = `${monthNames[deliveryStartMonthIndex]} ${newStartDay}-${monthNames[deliveryEndMonthIndex]} ${newEndDay}d.`;
+    }
+    
+    deliveryDate.textContent = `Numatoma užsakymo pristatymo data: ${deliveryDateString}`;
+    
+  } else {
+    deliveryDate.textContent = '';
+  }
+});
+
+
+
+routeDropdown.dispatchEvent(new Event('change'));
